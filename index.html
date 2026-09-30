@@ -354,6 +354,35 @@
   .tp-stat span { font-size:13px; color:var(--text-dim); }
   .tp-phase-note { margin-top:18px; font-size:15px; color:var(--text-dim); max-width:80ch; min-height:3.2em; }
   @media (prefers-reduced-motion: reduce) { .tp .dot { display:none; } .tp .n, .tp .ln, .tp .fl { transition:none; } }
+
+  /* ---- Project workflows ---- */
+  .wf-svg { display:block; width:100%; min-width:760px; height:auto; }
+  .wf-svg text { font-family:'JetBrains Mono',monospace; fill:var(--text-dim); font-size:11.5px; }
+  .wf-svg .h { font:600 12px 'JetBrains Mono',monospace; fill:var(--cyan); text-anchor:middle; letter-spacing:.08em; }
+  .wf-svg .c { text-anchor:middle; } .wf-svg .sm { font-size:10px; fill:var(--text-faint); }
+  .wf-svg .st { stroke:#5E6194; stroke-width:1.4; fill:none; }
+  .wf-svg .fl { stroke:var(--cyan); stroke-width:1.6; fill:none; stroke-dasharray:5 5; animation:wf-dash 1s linear infinite; }
+  .wf-svg .card { fill:#12132A; stroke:var(--border); }
+  .wf-svg .bad { stroke:#FF6B81; fill:rgba(255,107,129,.12); }
+  .wf-sweep { animation:wf-spin 4s linear infinite; transform-origin:0 0; }
+  .wf-msg { opacity:0; animation:wf-show 6.4s ease-in-out infinite; }
+  .wf-pulse { animation:wf-pulse 1.6s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+  .wf-scan { animation:wf-scan 2.6s ease-in-out infinite alternate; }
+  .wf-blink { animation:wf-heat 1.6s ease-in-out infinite; }
+  .wf-heat { animation:wf-heat 2.4s ease-in-out infinite; }
+  @keyframes wf-spin { to { transform:rotate(360deg); } }
+  @keyframes wf-show { 0%,4% { opacity:0; } 14%,78% { opacity:1; } 92%,100% { opacity:0; } }
+  @keyframes wf-pulse { 0%,100% { transform:scale(1); opacity:1; } 50% { transform:scale(2.2); opacity:.3; } }
+  @keyframes wf-scan { to { transform:translateY(92px); } }
+  @keyframes wf-heat { 0%,100% { opacity:.5; } 50% { opacity:1; } }
+  @keyframes wf-dash { to { stroke-dashoffset:-20; } }
+  .wf-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:20px; }
+  .wf-step { border:1px solid var(--border-soft); border-radius:var(--radius); padding:16px; background:var(--panel); display:flex; flex-direction:column; gap:8px; }
+  .wf-step em { font:600 12px 'JetBrains Mono',monospace; color:var(--cyan); font-style:normal; }
+  .wf-step h3 { font:600 16px 'Space Grotesk',sans-serif; }
+  .wf-step p { font-size:13.5px; color:var(--text-dim); }
+  .wf-note { margin-top:16px; font-size:12.5px; color:var(--text-faint); }
+  @media (prefers-reduced-motion: reduce) { .wf-sweep,.wf-pulse,.wf-scan,.wf-heat,.wf-blink,.wf-svg .fl { animation:none; } .wf-msg { animation:none; opacity:1; } }
 </style>
 </head>
 <body>
@@ -627,9 +656,106 @@
             <a class="proj-link" href="https://github.com/aphan37/CNNModel" target="_top" rel="noopener">repo ↗</a>
           </div>
           <p>A custom convolutional network that stages Alzheimer's severity from MRI scans, with Grad-CAM built in so you can actually see what the model is looking at — not just trust the output. Runs from CLI or a Streamlit interface.</p>
-          <div class="proj-tags"><span>TensorFlow</span><span>scikit-learn</span><span>OpenCV</span><span>Grad-CAM</span></div>
+          <div class="proj-tags"><span>PyTorch</span><span>scikit-learn</span><span>OpenCV</span><span>Grad-CAM</span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="workflows">
+    <div class="wrap-wide">
+      <div class="section-head reveal"><span class="section-kicker">HOW IT WORKS</span><h2>Two projects, end to end</h2></div>
+      <div class="tp-controls"><div class="tp-toggle" role="group" aria-label="Choose project">
+        <button class="tp-btn" data-wf="wifi" aria-pressed="true">Wi-Fi Auditing</button>
+        <button class="tp-btn" data-wf="cnn" aria-pressed="false">AlzhiNet CNN</button></div></div>
+      <div id="wf-wifi" class="wf-panel"><div class="tp-frame"><svg class="wf-svg" viewBox="0 0 1000 340" role="img" aria-label="Wi-Fi auditing workflow: scan, capture handshake, flag rogue access point">
+<defs><marker id="wa" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7B7EC0"/></marker>
+<linearGradient id="wsw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4FE3D4" stop-opacity="0"/><stop offset="1" stop-color="#4FE3D4" stop-opacity=".55"/></linearGradient></defs>
+<text class="h" x="160" y="26">01 · SCAN</text><text class="h" x="500" y="26">02 · CAPTURE</text><text class="h" x="850" y="26">03 · FLAG</text>
+<g transform="translate(160,180)">
+ <circle class="st" r="40"/><circle class="st" r="80"/><circle class="st" r="120"/><path class="st" d="M-120,0H120M0,-120V120" opacity=".4"/>
+ <g class="wf-sweep"><path d="M0,0 L120,0 A120,120 0 0 0 103.9,-60 Z" fill="url(#wsw)"/></g>
+ <circle cx="-72" cy="-34" r="5" fill="#7BE0A0"/><circle cx="52" cy="-62" r="5" fill="#7BE0A0"/><circle cx="86" cy="38" r="5" fill="#7BE0A0"/><circle cx="-38" cy="62" r="5" fill="#7BE0A0"/>
+ <circle class="wf-pulse" cx="-8" cy="-84" r="5" fill="#FF6B81"/><circle cx="-8" cy="-84" r="5" fill="#FF6B81"/>
+ <text class="sm" x="6" y="-92">unknown AP</text>
+</g>
+<text class="sm c" x="160" y="326">Kali Linux · scapy · aircrack-ng</text>
+<path class="fl" d="M296,180 H372" marker-end="url(#wa)"/>
+<g>
+ <text class="c" x="410" y="62">Client</text><text class="c" x="590" y="62">AP</text>
+ <path class="st" d="M410,72 V290M590,72 V290" stroke-dasharray="4 4"/>
+ <g class="wf-msg" style="animation-delay:0s"><path class="st" d="M588,108 H412" marker-end="url(#wa)"/><text class="c sm" x="500" y="100">1 · ANonce</text></g>
+ <g class="wf-msg" style="animation-delay:.5s"><path class="st" d="M412,152 H588" marker-end="url(#wa)"/><text class="c sm" x="500" y="144">2 · SNonce + MIC</text></g>
+ <g class="wf-msg" style="animation-delay:1s"><path class="st" d="M588,196 H412" marker-end="url(#wa)"/><text class="c sm" x="500" y="188">3 · GTK</text></g>
+ <g class="wf-msg" style="animation-delay:1.5s"><path class="st" d="M412,240 H588" marker-end="url(#wa)"/><text class="c sm" x="500" y="232">4 · ACK</text></g>
+ <rect x="438" y="262" width="124" height="28" rx="8" class="card" stroke="#4FE3D4"/><text class="c" x="500" y="280" style="fill:#4FE3D4">sniff → .cap</text>
+</g>
+<text class="sm c" x="500" y="326">WPA/WPA2 4-way handshake · controlled testing</text>
+<path class="fl" d="M628,180 H712" marker-end="url(#wa)"/>
+<g>
+ <rect class="card" x="722" y="70" width="256" height="44" rx="10"/><text x="738" y="97">Cafe_WiFi</text><text class="sm" x="880" y="97">-52 dBm  ✓</text>
+ <rect class="card" x="722" y="126" width="256" height="44" rx="10"/><text x="738" y="153">Office_5G</text><text class="sm" x="880" y="153">-47 dBm  ✓</text>
+ <rect class="card" x="722" y="182" width="256" height="44" rx="10"/><text x="738" y="209">Guest</text><text class="sm" x="880" y="209">-60 dBm  ✓</text>
+ <rect class="card bad wf-blink" x="722" y="238" width="256" height="44" rx="10"/><text x="738" y="265" style="fill:#FF6B81">Office_5G</text><text class="sm" x="852" y="265" style="fill:#FF6B81">⚠ anomaly · rogue AP?</text>
+</g>
+<text class="sm c" x="850" y="326">SSID broadcast anomalies (illustrative)</text>
+</svg></div><div class="wf-steps"><div class="wf-step"><em>01</em><h3>Scan</h3><p>Sweep the air for nearby networks and see what is broadcasting.</p><div class="proj-tags"><span>Kali Linux</span><span>scapy</span></div></div><div class="wf-step"><em>02</em><h3>Capture</h3><p>Grab WPA/WPA2 handshakes for controlled testing.</p><div class="proj-tags"><span>aircrack-ng</span></div></div><div class="wf-step"><em>03</em><h3>Flag</h3><p>Watch SSID broadcasts for anomalies that give away rogue access points.</p><div class="proj-tags"><span>scapy</span><span>Python</span></div></div><div class="wf-step"><em>04</em><h3>Understand</h3><p>See what weak Wi-Fi security looks like from the attacker’s seat.</p><div class="proj-tags"><span>Authorized testing only</span></div></div></div></div>
+      <div id="wf-cnn" class="wf-panel" hidden><div class="tp-frame"><svg class="wf-svg" style="min-width:900px" viewBox="0 0 1100 350" role="img" aria-label="AlzhiNet workflow: NACC clinical records and MRI scans are harmonized, smoothed, passed through a CNN, and staged on the CDR severity scale with Grad-CAM explanations">
+<defs><marker id="ca" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7B7EC0"/></marker>
+<radialGradient id="heat"><stop offset="0" stop-color="#FF3B5C" stop-opacity=".95"/><stop offset=".5" stop-color="#FFB067" stop-opacity=".6"/><stop offset="1" stop-color="#FFE066" stop-opacity="0"/></radialGradient>
+<linearGradient id="sev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7BE0A0"/><stop offset=".5" stop-color="#FFE066"/><stop offset="1" stop-color="#FF6B81"/></linearGradient></defs>
+<text class="h" x="80" y="34">01 · SOURCES</text><text class="h" x="230" y="34">02 · HARMONIZE</text><text class="h" x="375" y="34">03 · SMOOTH</text><text class="h" x="585" y="34">04 · ALZHINET · PYTORCH</text><text class="h" x="815" y="34">05 · SEVERITY (CDR)</text><text class="h" x="1000" y="34">06 · EXPLAIN</text>
+
+<g><rect class="card" x="20" y="80" width="120" height="84" rx="10" stroke="#FFB067"/>
+ <path class="st" d="M32,104H128M32,124H128M32,144H128M66,92V156" stroke="#FFB067" opacity=".7"/>
+ <text class="c sm" x="80" y="182" style="fill:#FFB067">NACC clinical CSV</text></g>
+<g><rect class="card" x="20" y="206" width="120" height="84" rx="10" stroke="#6FB7FF"/>
+ <g class="st" stroke="#6FB7FF"><rect x="30" y="218" width="40" height="44" rx="4"/><ellipse cx="50" cy="240" rx="13" ry="16"/>
+ <rect x="76" y="222" width="50" height="34" rx="4"/><ellipse cx="101" cy="239" rx="19" ry="11"/>
+ <rect x="52" y="262" width="34" height="22" rx="4"/><ellipse cx="69" cy="273" rx="11" ry="7"/></g>
+ <text class="c sm" x="80" y="308" style="fill:#6FB7FF">MRI .jpg scans</text></g>
+
+<path class="fl" d="M144,122 C164,122 168,158 186,166" marker-end="url(#ca)"/><path class="fl" d="M144,248 C164,248 168,212 186,204" marker-end="url(#ca)"/>
+<rect class="card" x="190" y="130" width="120" height="110" rx="12" stroke="#4FE3D4"/>
+<text class="c" x="250" y="160" style="fill:#4FE3D4">harmonize</text><text class="c sm" x="250" y="182">match records to</text><text class="c sm" x="250" y="197">scans by NACCID</text><text class="c sm" x="250" y="216">label by CDR class</text>
+<rect class="card" x="190" y="252" width="120" height="26" rx="13"/><text class="c sm" x="250" y="269">split by patient</text>
+<path class="fl" d="M314,185 H352" marker-end="url(#ca)"/>
+
+<rect class="card" x="356" y="130" width="112" height="110" rx="12" stroke="#A78BFF"/>
+<g><rect x="366" y="142" width="36" height="36" rx="5" fill="#12132A" stroke="#5E6194"/><circle cx="376" cy="152" r="1.4" fill="#C2C3E4"/><circle cx="392" cy="150" r="1.4" fill="#C2C3E4"/><circle cx="384" cy="166" r="1.4" fill="#C2C3E4"/><circle cx="374" cy="170" r="1.4" fill="#C2C3E4"/><circle cx="395" cy="168" r="1.4" fill="#C2C3E4"/><ellipse cx="384" cy="160" rx="10" ry="12" class="st"/>
+<path class="st" d="M405,160H418" marker-end="url(#ca)"/>
+<rect x="422" y="142" width="36" height="36" rx="5" fill="#12132A" stroke="#5E6194"/><ellipse cx="440" cy="160" rx="10" ry="12" class="st" style="stroke:#C9B8FF"/></g>
+<text class="c sm" x="412" y="200" style="fill:#C9B8FF">Gaussian σ 1–2</text><text class="c sm" x="412" y="218">mean / std norm</text>
+<path class="fl" d="M472,185 H504" marker-end="url(#ca)"/>
+
+<g stroke="#6FB7FF" fill="rgba(111,183,255,.14)" stroke-width="1.5">
+ <g><rect x="510" y="118" width="26" height="134" rx="4"/><rect x="518" y="126" width="26" height="134" rx="4"/></g>
+ <g><rect x="566" y="135" width="24" height="100" rx="4"/><rect x="574" y="143" width="24" height="100" rx="4"/></g>
+ <g><rect x="620" y="152" width="22" height="66" rx="4"/><rect x="628" y="160" width="22" height="66" rx="4"/></g></g>
+<text class="c sm" x="545" y="282">conv blocks</text>
+<g fill="rgba(167,139,255,.2)" stroke="#A78BFF" stroke-width="1.3"><circle cx="680" cy="160" r="6"/><circle cx="680" cy="185" r="6"/><circle cx="680" cy="210" r="6"/><circle cx="712" cy="185" r="6"/></g>
+<text class="c sm" x="696" y="282">GAP → FC</text>
+<path class="fl" d="M722,185 H766" marker-end="url(#ca)"/>
+
+<rect x="768" y="92" width="6" height="186" rx="3" fill="url(#sev)"/>
+<g>
+ <rect class="card" x="782" y="92" width="150" height="30" rx="8"/><text x="796" y="111">0 · Normal</text>
+ <rect class="card" x="782" y="130" width="150" height="30" rx="8"/><text x="796" y="149">0.5 · MCI</text>
+ <rect class="card wf-blink" x="782" y="168" width="150" height="30" rx="8" stroke="#4FE3D4" style="fill:rgba(79,227,212,.15)"/><text x="796" y="187" style="fill:#4FE3D4">1 · Mild</text>
+ <rect class="card" x="782" y="206" width="150" height="30" rx="8"/><text x="796" y="225">2 · Moderate</text>
+ <rect class="card" x="782" y="244" width="150" height="30" rx="8"/><text x="796" y="263">3 · Severe</text></g>
+<text class="c sm" x="850" y="300">ordered scale · scored with QWK</text>
+
+<path class="fl" d="M634,148 C720,64 900,64 958,96" marker-end="url(#ca)"/><text class="c sm" x="800" y="66" style="fill:#4FE3D4">gradients → heatmap</text>
+<g><ellipse cx="1010" cy="140" rx="52" ry="58" class="st" fill="#12132A"/><path class="st" d="M1010,84V196M970,122Q1010,106 1050,122M968,168Q1010,184 1052,168" opacity=".5"/>
+<circle class="wf-heat" cx="1026" cy="128" r="32" fill="url(#heat)"/><circle class="wf-heat" cx="990" cy="168" r="19" fill="url(#heat)" style="animation-delay:.8s"/></g>
+<text class="c sm" x="1010" y="220">where the model looked</text>
+<path class="fl" d="M936,200 C962,200 968,262 978,270" marker-end="url(#ca)"/>
+<rect class="card" x="984" y="256" width="52" height="28" rx="14" stroke="#7BE0A0"/><text class="c" x="1010" y="274" style="fill:#7BE0A0">CLI</text>
+<rect class="card" x="984" y="292" width="100" height="28" rx="14" stroke="#FFB067"/><text class="c" x="1034" y="310" style="fill:#FFB067">Streamlit</text>
+<text class="c sm" x="550" y="334">NACC data center · no patient data in the repo · research project, not a medical device</text>
+</svg></div><div class="wf-steps"><div class="wf-step"><em>01</em><h3>Harmonize</h3><p>Merge NACC clinical records with MRI scans by patient ID and sort them into CDR severity classes.</p><div class="proj-tags"><span>NACC</span><span>data_pipeline.py</span></div></div><div class="wf-step"><em>02</em><h3>Smooth &amp; split</h3><p>Gaussian smoothing (σ 1–2) removes scanner noise. Splits are by patient, so no one appears in train and test.</p><div class="proj-tags"><span>Gaussian σ 1–2</span><span>patient-level split</span></div></div><div class="wf-step"><em>03</em><h3>Train &amp; stage</h3><p>AlzhiNet with global average pooling and a class-weighted loss stages severity from Normal to Severe.</p><div class="proj-tags"><span>PyTorch</span><span>CDR 0–3</span></div></div><div class="wf-step"><em>04</em><h3>Evaluate &amp; explain</h3><p>Quadratic-weighted kappa respects the severity order. Grad-CAM shows where it looked, from the CLI or Streamlit.</p><div class="proj-tags"><span>Grad-CAM</span><span>Streamlit</span></div></div></div></div>
+      <p class="wf-note">Diagrams are illustrative: the SSIDs, signal values and highlighted severity are examples, not real captures or model output.</p>
     </div>
   </section>
 
@@ -876,6 +1002,10 @@
     document.querySelectorAll('.tp-leg').forEach(function(o){o.setAttribute('aria-pressed','false');});
     svg.setAttribute('data-focus',on?'':b.dataset.tier); if(!on) b.setAttribute('aria-pressed','true');});});
 })();
+
+(function(){var b=document.querySelectorAll('[data-wf]');b.forEach(function(x){x.addEventListener('click',function(){
+ b.forEach(function(o){o.setAttribute('aria-pressed',o===x);});
+ document.getElementById('wf-wifi').hidden=x.dataset.wf!=='wifi';document.getElementById('wf-cnn').hidden=x.dataset.wf!=='cnn';});});})();
 </script>
 
 </body>
