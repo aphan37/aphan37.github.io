@@ -9,19 +9,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0E0E1C;
-    --bg-2: #14152A;
-    --panel: #171833;
-    --border: #2A2C4D;
-    --border-soft: #22233F;
-    --text: #F5F5FC;
-    --text-dim: #C2C3E4;
-    --text-faint: #9294BC;
-    --violet: #8C6BFF;
-    --violet-dim: #5B4499;
-    --cyan: #4FE0D2;
-    --grad: linear-gradient(120deg, #8C6BFF, #4FE0D2);
-    --radius: 6px;
+    --bg: #0A0A0A;
+    --bg-2: #111111;
+    --panel: #141414;
+    --border: #2E2E2E;
+    --border-soft: #202020;
+    --text: #FAFAFA;
+    --text-dim: #BDBDBD;
+    --text-faint: #8A8A8A;
+    --violet: #FFFFFF;
+    --violet-dim: #6B6B6B;
+    --cyan: #FFFFFF;
+    --grad: #FFFFFF;
+--radius: 2px;
     --max: 880px;
     --wide: 1120px;
     box-sizing: border-box;
@@ -48,7 +48,7 @@
     opacity: 0.035; mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
-  ::selection { background: var(--violet); color: #0E0E1C; }
+  ::selection { background: var(--violet); color: #0A0A0A; }
 
   h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; margin: 0; letter-spacing: -0.015em; color: var(--text); }
   a { color: var(--cyan); text-decoration: none; }
@@ -61,7 +61,7 @@
   /* ---------- NAV ---------- */
   header.nav {
     position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
-    background: rgba(14,14,28,0.78);
+    background: rgba(10,10,10,0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-soft);
   }
@@ -72,7 +72,7 @@
   .nav-links a:hover { color: var(--text); }
   .btn-resume {
     font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500;
-    color: #0E0E1C !important; background: var(--grad);
+    color: #0A0A0A !important; background: var(--grad);
     padding: 9px 16px; border-radius: 999px; white-space: nowrap;
     transition: opacity .15s ease, transform .1s ease;
   }
@@ -96,7 +96,7 @@
     display: inline-flex; align-items: center; gap: 8px;
   }
   .cta:hover { border-color: var(--text-dim); background: rgba(255,255,255,.03); }
-  .cta.primary { background: var(--grad); border: none; color: #0E0E1C; font-weight: 600; }
+  .cta.primary { background: var(--grad); border: none; color: #0A0A0A; font-weight: 600; }
   .cta.primary:hover { opacity: .9; }
 
   .hero-visual { position: relative; aspect-ratio: 1/1; max-width: 460px; margin: 0 auto; }
@@ -161,7 +161,7 @@
   }
   .cert-card .name { font-size: 14px; font-weight: 500; color: var(--text); }
   .cert-card .issuer { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--text-faint); }
-  .cert-card.primary { border-color: var(--violet-dim); background: linear-gradient(180deg, rgba(140,107,255,.08), transparent); }
+  .cert-card.primary { border-color: var(--violet-dim); background: linear-gradient(180deg, rgba(255,255,255,.04), transparent); }
 
   /* ---------- PROJECTS ---------- */
   .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -213,7 +213,7 @@
   .flow-dot {
     position: absolute; top: 13px; width: 8px; height: 8px; margin-top: -3px;
     border-radius: 50%; background: var(--grad);
-    box-shadow: 0 0 10px 1px rgba(140,107,255,.55);
+    box-shadow: 0 0 10px 1px rgba(255,255,255,.25);
     left: calc(100%/12); opacity: 0;
     animation: flowMove 5.7s linear infinite;
   }
@@ -272,13 +272,13 @@
   .cta.primary:hover { transform: translateY(-1px) scale(1.015); }
 
   .job-card { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
-  .job-card:hover { transform: translateY(-3px); border-color: var(--violet-dim); box-shadow: 0 12px 28px -18px rgba(140,107,255,.35); }
+  .job-card:hover { transform: translateY(-3px); border-color: var(--violet-dim); box-shadow: 0 12px 28px -18px rgba(255,255,255,.08); }
 
   .cert-card { transition: transform .2s ease, border-color .2s ease; }
   .cert-card:hover { transform: translateY(-2px); border-color: var(--violet-dim); }
 
   .proj { transition: border-color .2s ease, transform .25s ease, box-shadow .25s ease; }
-  .proj:hover { box-shadow: 0 16px 32px -20px rgba(140,107,255,.4); }
+  .proj:hover { box-shadow: 0 16px 32px -20px rgba(255,255,255,.08); }
 
   .chip { transition: border-color .15s ease, color .15s ease; }
   .chip:hover { border-color: var(--violet-dim); color: var(--text); }
@@ -323,7 +323,7 @@
   .tp-toggle, .tp-legend { display:flex; flex-wrap:wrap; gap:8px; }
   .tp-btn { font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--text-dim); background:transparent; border:1px solid var(--border); border-radius:999px; padding:7px 15px; cursor:pointer; transition:all .2s; }
   .tp-btn:hover { border-color:var(--violet); color:var(--text); }
-  .tp-btn[aria-pressed="true"] { background:var(--grad); color:#0E0E1C; border-color:transparent; font-weight:600; }
+  .tp-btn[aria-pressed="true"] { background:var(--grad); color:#0A0A0A; border-color:transparent; font-weight:600; }
   .tp-leg { display:inline-flex; align-items:center; gap:7px; }
   .tp-leg i { width:10px; height:10px; border-radius:3px; background:var(--c); display:inline-block; }
   .tp-leg[aria-pressed="true"] { background:var(--panel); border-color:var(--c); color:var(--text); }
@@ -383,6 +383,34 @@
   .wf-step p { font-size:13.5px; color:var(--text-dim); }
   .wf-note { margin-top:16px; font-size:12.5px; color:var(--text-faint); }
   @media (prefers-reduced-motion: reduce) { .wf-sweep,.wf-pulse,.wf-scan,.wf-heat,.wf-blink,.wf-svg .fl { animation:none; } .wf-msg { animation:none; opacity:1; } }
+
+  /* ---- Monochrome / modernist theme (diagrams keep their colour coding) ---- */
+  body::before { display:none; }
+  ::selection { background:#fff; color:#0A0A0A; }
+  h1, h2 { letter-spacing:-0.035em; }
+  h2 { font-size:clamp(30px,4.4vw,46px); line-height:1.08; }
+  .kicker, .section-kicker { color:var(--text-faint); text-transform:uppercase; letter-spacing:.14em; font-size:12px; }
+  section[id] { border-top:1px solid var(--border-soft); }
+  .chip, .proj-tags span, .tp-btn, .btn-resume, .cta { border-radius:2px; }
+  .impact-num, .tp-stat b { background:none; color:var(--text); -webkit-text-fill-color:currentColor; }
+  .cta.primary, .btn-resume { color:#0A0A0A !important; }
+  .proj, .job-card, .cert-card, .tp-stat, .wf-step { box-shadow:none; }
+  .proj:hover, .job-card:hover { transform:none; border-color:var(--text); box-shadow:none; }
+  .tp-frame { --panel:#0E0E1C; --border:#2A2C4D; --border-soft:#22233F; --text:#F5F5FC; --text-dim:#C2C3E4; --text-faint:#9294BC; --cyan:#4FE3D4; --violet:#8C6BFF; background:#0E0E1C; border-color:#0E0E1C; border-radius:2px; }
+  #projects, #workflows { --bg:#F4F4F4; --bg-2:#EBEBEB; --panel:#FFFFFF; --border:#BDBDBD; --border-soft:#DADADA; --text:#0A0A0A; --text-dim:#3A3A3A; --text-faint:#666666; --violet:#0A0A0A; --violet-dim:#0A0A0A; --cyan:#0A0A0A; --grad:#0A0A0A; background:var(--bg); color:var(--text); }
+  #projects { border-top:0; }
+  #projects .proj { border-color:var(--border); }
+  #projects .proj:hover { border-color:#0A0A0A; box-shadow:6px 6px 0 #0A0A0A; transform:translate(-3px,-3px); }
+  #workflows .tp-btn[aria-pressed="true"], #projects .cta.primary { color:#FFFFFF !important; }
+  #workflows .tp-btn:hover { border-color:#0A0A0A; color:#0A0A0A; }
+
+  #topology .tp-frame { background-color:#0A0A0A; background-image:radial-gradient(#262626 1px, transparent 1px); background-size:22px 22px; }
+  .tp-tour { margin-top:-4px; }
+  .tp .sg { transition:opacity .4s; }
+  .tp[data-site="sf"] .sg:not([data-site="sf"]), .tp[data-site="ash"] .sg:not([data-site="ash"]), .tp[data-site="bos"] .sg:not([data-site="bos"]), .tp[data-site="lon"] .sg:not([data-site="lon"]) { opacity:.13; }
+  .tp .trace { fill:#fff; filter:drop-shadow(0 0 6px #fff); }
+  .tp[data-site="sf"] .dot, .tp[data-site="ash"] .dot, .tp[data-site="bos"] .dot, .tp[data-site="lon"] .dot { opacity:.12; }
+  #tp-follow { border-color:var(--text); color:var(--text); }
 </style>
 </head>
 <body>
@@ -420,13 +448,13 @@
 
         <div class="hero-visual" aria-hidden="true">
           <svg viewBox="0 0 400 400">
-            <line x1="200" y1="200" x2="90" y2="120" stroke="#2A2C4D" stroke-width="1.5"/>
-            <line x1="200" y1="200" x2="320" y2="100" stroke="#2A2C4D" stroke-width="1.5"/>
-            <line x1="200" y1="200" x2="70" y2="290" stroke="#2A2C4D" stroke-width="1.5"/>
-            <line x1="200" y1="200" x2="330" y2="300" stroke="#2A2C4D" stroke-width="1.5"/>
-            <line x1="200" y1="200" x2="200" y2="70" stroke="#2A2C4D" stroke-width="1.5"/>
-            <line x1="200" y1="200" x2="60" y2="200" stroke="#2A2C4D" stroke-width="1"/>
-            <line x1="200" y1="200" x2="340" y2="200" stroke="#2A2C4D" stroke-width="1"/>
+            <line x1="200" y1="200" x2="90" y2="120" stroke="#3A3A3A" stroke-width="1.5"/>
+            <line x1="200" y1="200" x2="320" y2="100" stroke="#3A3A3A" stroke-width="1.5"/>
+            <line x1="200" y1="200" x2="70" y2="290" stroke="#3A3A3A" stroke-width="1.5"/>
+            <line x1="200" y1="200" x2="330" y2="300" stroke="#3A3A3A" stroke-width="1.5"/>
+            <line x1="200" y1="200" x2="200" y2="70" stroke="#3A3A3A" stroke-width="1.5"/>
+            <line x1="200" y1="200" x2="60" y2="200" stroke="#3A3A3A" stroke-width="1"/>
+            <line x1="200" y1="200" x2="340" y2="200" stroke="#3A3A3A" stroke-width="1"/>
             <circle class="noise-node" cx="90" cy="120" r="7" fill="#66678F"/>
             <circle class="noise-node" cx="320" cy="100" r="5" fill="#66678F"/>
             <circle class="noise-node" cx="70" cy="290" r="6" fill="#66678F"/>
@@ -437,11 +465,11 @@
             <circle class="noise-node" cx="140" cy="330" r="4" fill="#66678F"/>
             <circle class="noise-node" cx="260" cy="340" r="5" fill="#66678F"/>
             <circle class="signal-node" cx="200" cy="200" r="15" fill="url(#g1)"/>
-            <circle cx="200" cy="200" r="26" fill="none" stroke="#8C6BFF" stroke-width="1" opacity="0.4"/>
+            <circle cx="200" cy="200" r="26" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.4"/>
             <defs>
               <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#8C6BFF"/>
-                <stop offset="100%" stop-color="#4FE0D2"/>
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="100%" stop-color="#BDBDBD"/>
               </linearGradient>
             </defs>
           </svg>
@@ -607,8 +635,8 @@
 
   <section id="topology">
     <div class="wrap-wide">
-      <div class="section-head reveal"><span class="section-kicker">ARCHITECTURE</span><h2>Buttercup Games: a four-site Splunk topology</h2></div>
-      <p class="about-text reveal" style="margin-bottom:28px;">A worked design for a fictional game company, modelled on Splunk's <em>Architecting Splunk Enterprise Deployments</em> course. It spans San Francisco, an Ashburn colo, Boston and London: a multisite indexer cluster, a search head cluster, and a management tier. Toggle between the two design phases, or click a tier to isolate it.</p>
+      <div class="section-head reveal"><span class="section-kicker">ARCHITECTURE</span><h2>Buttercup Games: Splunk deployment design</h2></div>
+      <p class="about-text reveal" style="margin-bottom:28px;">A four-site Splunk deployment I designed from scratch for a fictional company: a multisite indexer cluster, a search head cluster and a dedicated management tier, in two phases. Explore by site or phase, or trace a log end to end.</p>
 
       <div class="tp-controls">
         <div class="tp-toggle" role="group" aria-label="Design phase">
@@ -623,8 +651,18 @@
         </div>
       </div>
 
+      <div class="tp-controls tp-tour">
+        <div class="tp-toggle" role="group" aria-label="Site tour">
+          <button class="tp-btn" data-site="" aria-pressed="true">All sites</button>
+          <button class="tp-btn" data-site="sf" aria-pressed="false">San Francisco</button>
+          <button class="tp-btn" data-site="ash" aria-pressed="false">Ashburn</button>
+          <button class="tp-btn" data-site="bos" aria-pressed="false">Boston</button>
+          <button class="tp-btn" data-site="lon" aria-pressed="false">London</button>
+        </div>
+        <button class="tp-btn" id="tp-follow">▶ Follow a log</button>
+      </div>
       <div class="tp-frame">
-        <svg id="tp" class="tp" viewBox="0 0 1200 690" data-phase="1" data-focus="" role="img" aria-label="Network and Splunk topology for Buttercup Games across San Francisco, Ashburn, Boston and London"></svg>
+        <svg id="tp" class="tp" viewBox="0 0 1200 734" data-phase="1" data-focus="" data-site="" role="img" aria-label="Network and Splunk topology for Buttercup Games across San Francisco, Ashburn, Boston and London"></svg>
       </div>
       <p class="tp-phase-note" id="tp-note" aria-live="polite"></p>
 
@@ -696,7 +734,7 @@
  <rect class="card" x="722" y="70" width="256" height="44" rx="10"/><text x="738" y="97">Cafe_WiFi</text><text class="sm" x="880" y="97">-52 dBm  ✓</text>
  <rect class="card" x="722" y="126" width="256" height="44" rx="10"/><text x="738" y="153">Office_5G</text><text class="sm" x="880" y="153">-47 dBm  ✓</text>
  <rect class="card" x="722" y="182" width="256" height="44" rx="10"/><text x="738" y="209">Guest</text><text class="sm" x="880" y="209">-60 dBm  ✓</text>
- <rect class="card bad wf-blink" x="722" y="238" width="256" height="44" rx="10"/><text x="738" y="265" style="fill:#FF6B81">Office_5G</text><text class="sm" x="852" y="265" style="fill:#FF6B81">⚠ anomaly · rogue AP?</text>
+ <rect class="card bad wf-blink" x="722" y="238" width="256" height="44" rx="10"/><text x="738" y="265" style="fill:#FF6B81">Office_5G</text><text class="sm" x="852" y="265" style="fill:#FF6B81">⚠ rogue AP?</text>
 </g>
 <text class="sm c" x="850" y="326">SSID broadcast anomalies (illustrative)</text>
 </svg></div><div class="wf-steps"><div class="wf-step"><em>01</em><h3>Scan</h3><p>Sweep the air for nearby networks and see what is broadcasting.</p><div class="proj-tags"><span>Kali Linux</span><span>scapy</span></div></div><div class="wf-step"><em>02</em><h3>Capture</h3><p>Grab WPA/WPA2 handshakes for controlled testing.</p><div class="proj-tags"><span>aircrack-ng</span></div></div><div class="wf-step"><em>03</em><h3>Flag</h3><p>Watch SSID broadcasts for anomalies that give away rogue access points.</p><div class="proj-tags"><span>scapy</span><span>Python</span></div></div><div class="wf-step"><em>04</em><h3>Understand</h3><p>See what weak Wi-Fi security looks like from the attacker’s seat.</p><div class="proj-tags"><span>Authorized testing only</span></div></div></div></div>
@@ -941,6 +979,7 @@
   function flow(d){out+='<path class="fl" d="'+d+'"/>';flows.push(d);}
 
   /* ---------- San Francisco ---------- */
+  out+='<g class="sg" data-site="sf">';
   out+=site(10,10,1180,272)+'<text class="site-name" x="600" y="34">San Francisco</text>';
   out+=box(24,44,150,190,'#A78BFF','Management tier · VMware')+box(196,44,88,200,'#7BE0A0','Search tier')+box(300,44,88,200,'#6FB7FF','Indexing tier');
   [['cm',34,60],['mc',114,60],['lm',34,116],['ds',114,116],['shc',74,172],['sh',214,60],['sh',214,118],['sh',214,176],['idx',318,60],['idx',318,118],['idx',318,176],
@@ -955,6 +994,7 @@
   [[110,75],[110,133],[190,133],[190,191]].forEach(function(r){out+=seg(828,r[0],880,r[1]);});
   out+=line('M342,244 V314','ms');
 
+  out+='</g><g class="sg" data-site="ash">';
   /* ---------- Ashburn ---------- */
   out+=site(10,292,1180,150)+'<text class="site-name" x="40" y="380">Ashburn COLO</text>';
   out+=box(300,314,220,100,'#6FB7FF','Indexing tier · multisite cluster');
@@ -968,10 +1008,11 @@
   out+=seg(890,340,920,333)+seg(890,404,920,397)+seg(890,340,920,397)+seg(890,404,920,333);
   out+=seg(968,333,985,365)+seg(968,397,985,365)+seg(1033,365,1050,365)+seg(1098,365,1115,365);
 
+  out+='</g>';
   /* ---------- Boston (m=0) and London (m=1, mirrored) ---------- */
   function remote(m,name){
     var X=function(x){return m?1200-x:x;}, N=function(x){return m?1200-x-W:x;}, s=function(a,b,c,d,k){return seg(X(a),b,X(c),d,k);};
-    out+=site(m?615:10,454,575,226)+'<text class="site-name" x="'+(m?1176:24)+'" y="480" text-anchor="'+(m?'end':'start')+'">'+name+'</text>';
+    out+='<g class="sg" data-site="'+(m?'lon':'bos')+'">'+site(m?615:10,454,575,226)+'<text class="site-name" x="'+(m?1176:24)+'" y="480" text-anchor="'+(m?'end':'start')+'">'+name+'</text>';
     [['fw',30,530],['srv',30,605],['rt',100,565],['sw',170,520],['sw',170,610],['rf',250,500],['srv',250,585],['smb',370,520],['smb',370,610],['hf',470,520],['hf',470,610]].forEach(function(n){out+=node(n[0],N(n[1]),n[2]);});
     out+=s(54,560,54,605)+s(78,545,100,580)+s(148,580,170,535)+s(148,580,170,625);
     out+=s(218,535,250,515)+s(218,535,250,600)+s(218,625,250,515)+s(218,625,250,600);
@@ -980,9 +1021,11 @@
     var y=m?446:448;
     flow('M'+X(494)+',520 V'+y+' H405 V414');
     flow('M'+X(518)+',625 H'+X(550)+' V'+y+' H405 V414');
+    out+='</g>';
   }
   remote(0,'Boston');remote(1,'London');
 
+  out+='<g><rect class="site" x="740" y="692" width="450" height="38" rx="2"/><text class="site-name" x="754" y="708" style="font-size:12px">BUTTERCUP GAMES \u00b7 SPLUNK ESTATE</text><text class="box-l" x="754" y="722">DESIGNED &amp; DRAWN FROM SCRATCH BY ANH PHAN</text><text class="box-l p1" x="1176" y="708" text-anchor="end">REV · PHASE 1</text><text class="box-l p2" x="1176" y="708" text-anchor="end">REV · PHASE 2</text></g>';
   svg.innerHTML=out;
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!reduce) flows.forEach(function(d,i){
@@ -1006,6 +1049,41 @@
 (function(){var b=document.querySelectorAll('[data-wf]');b.forEach(function(x){x.addEventListener('click',function(){
  b.forEach(function(o){o.setAttribute('aria-pressed',o===x);});
  document.getElementById('wf-wifi').hidden=x.dataset.wf!=='wifi';document.getElementById('wf-cnn').hidden=x.dataset.wf!=='cnn';});});})();
+
+(function(){
+  var svg=document.getElementById('tp'); if(!svg) return;
+  var note=document.getElementById('tp-note'), NS='http://www.w3.org/2000/svg', timers=[];
+  var caps={
+   sf:'San Francisco is the core site: a three-node search head cluster, three clustered indexers, and the whole management tier (CM, LM, MC, DS, SHC), plus a test environment isolated on its own VMware host.',
+   ash:'Ashburn COLO holds the other half of the multisite indexer cluster and receives data from every remote site. It also hosts two DMZs with generic servers behind a firewall.',
+   bos:'Boston is an edge site: firewall, router, switches, an RFID reader and servers. Two heavy forwarders ship everything to the Ashburn indexers.',
+   lon:'London mirrors Boston: the same edge layout with two heavy forwarders sending to the Ashburn indexers.'};
+  var phaseNote=function(){return svg.getAttribute('data-phase')==='1'?'Phase 1: hosts and network devices feed eight SMB .LOG servers, one pair per site, which hand logs to the heavy forwarders. Those forward to the indexers.':'Phase 2: the eight SMB log servers are retired. Heavy forwarders sit directly on each site\u2019s network path, so there is one less hop to run and secure.';};
+  function refresh(){var k=svg.getAttribute('data-site'); note.textContent=k?caps[k]:phaseNote();}
+  function stop(){timers.forEach(clearTimeout);timers=[];svg.querySelectorAll('.trace').forEach(function(t){t.remove();});}
+  document.querySelectorAll('[data-site]').forEach(function(b){ if(b.tagName!=='BUTTON') return; b.addEventListener('click',function(){
+    stop(); svg.setAttribute('data-site',b.dataset.site);
+    document.querySelectorAll('.tp-tour [data-site]').forEach(function(o){o.setAttribute('aria-pressed',o===b);}); refresh();});});
+  document.querySelectorAll('.tp-toggle [data-phase]').forEach(function(b){b.addEventListener('click',function(){setTimeout(refresh,0);});});
+  document.getElementById('tp-follow').addEventListener('click',function(){
+    stop(); svg.setAttribute('data-site','');
+    document.querySelectorAll('.tp-tour [data-site]').forEach(function(o){o.setAttribute('aria-pressed',o.dataset.site==='');});
+    var p1=svg.getAttribute('data-phase')==='1';
+    var path='M298,515 '+(p1?'L370,535 L418,535 ':'')+'L470,535 L494,535 V448 H405 V414 L396,376 L342,314 V244 L342,191 L262,191';
+    var steps=[[0,'A sensor event is logged in Boston by the RFID reader.'],
+     [1300,p1?'Phase 1: it lands on an SMB .LOG server first.':'Phase 2: the heavy forwarder picks it up directly.'],
+     [2800,'The heavy forwarder ships it across the WAN to the Ashburn indexers.'],
+     [4600,'The multisite cluster replicates it to the indexers in San Francisco.'],
+     [6200,'A search head in SF can now search it. From raw event to answer.']];
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    steps.forEach(function(st){ if(reduce && st[0]<6200) return; timers.push(setTimeout(function(){note.textContent=st[1];},reduce?0:st[0])); });
+    if(reduce) return;
+    var c=document.createElementNS(NS,'circle'); c.setAttribute('r','6'); c.setAttribute('class','trace');
+    var a=document.createElementNS(NS,'animateMotion'); a.setAttribute('dur','7s'); a.setAttribute('path',path); a.setAttribute('fill','freeze'); a.setAttribute('repeatCount','1');
+    c.appendChild(a); svg.appendChild(c); a.beginElement && a.beginElement();
+    timers.push(setTimeout(function(){c.remove();},7600));
+  });
+})();
 </script>
 
 </body>
