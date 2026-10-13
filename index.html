@@ -668,11 +668,11 @@
 
       <div class="tp-stats">
         <div class="tp-stat"><b>4</b><span>sites: San Francisco, Ashburn COLO, Boston, London</span></div>
-        <div class="tp-stat"><b>8</b><span>heavy forwarders, two per site</span></div>
+        <div class="tp-stat"><b>12</b><span>forwarders: one universal and two heavy per site</span></div>
         <div class="tp-stat"><b>6</b><span>clustered indexers across SF and Ashburn</span></div>
         <div class="tp-stat"><b>5</b><span>management nodes: CM, LM, MC, DS, SHC</span></div>
       </div>
-      <p class="pipeline-note mono reveal">Boston and London heavy forwarders send to the Ashburn indexers, and the SF and Ashburn indexers form one multisite cluster. The test environment is isolated in its own VMware host.</p>
+      <p class="pipeline-note mono reveal">At every site, data goes through a universal forwarder, then a heavy forwarder for parsing. Boston and London forward to the Ashburn indexers, and the SF and Ashburn indexers form one multisite cluster. The test environment is isolated in its own VMware host.</p>
     </div>
   </section>
 
@@ -964,7 +964,7 @@
 (function(){
   var svg = document.getElementById('tp'); if(!svg) return;
   var NS='http://www.w3.org/2000/svg', W=48, H=30, out='';
-  var T={hf:['HF','Heavy Forwarder','col'],idx:['IDX','Indexer','idx'],sh:['SH','Search Head','sea'],
+  var T={hf:['HF','Heavy Forwarder (parses data)','col'],uf:['UF','Universal Forwarder (intermediate forwarder)','col'],idx:['IDX','Indexer','idx'],sh:['SH','Search Head','sea'],
     cm:['CM','Cluster Manager','mgt'],lm:['LM','License Manager','mgt'],mc:['MC','Monitoring Console / Deployment Server','mgt'],
     ds:['DS','Deployment Server','mgt'],shc:['SHC','Search Head Cluster (management tier)','mgt'],
     fw:['FW','Firewall','net'],rt:['RTR','Router','net'],sw:['SW','Network Switch','net'],
@@ -983,44 +983,46 @@
   out+=site(10,10,1180,272)+'<text class="site-name" x="600" y="34">San Francisco</text>';
   out+=box(24,44,150,190,'#A78BFF','Management tier · VMware')+box(196,44,88,200,'#7BE0A0','Search tier')+box(300,44,88,200,'#6FB7FF','Indexing tier');
   [['cm',34,60],['mc',114,60],['lm',34,116],['ds',114,116],['shc',74,172],['sh',214,60],['sh',214,118],['sh',214,176],['idx',318,60],['idx',318,118],['idx',318,176],
-   ['hf',430,95],['hf',430,175],['smb',510,95],['smb',510,175],['fw',620,135],['rt',700,135],['sw',780,95],['sw',780,175],['ad',880,60],['sep',880,118],['rf',880,176]].forEach(function(n){out+=node(n[0],n[1],n[2]);});
-  out+=box(1000,44,170,200,'#7E80AE','Test environment · VMware');
-  [['sh',1012,70],['idx',1108,70],['mc',1060,150]].forEach(function(n){out+=node(n[0],n[1],n[2]);});
+   ['hf',430,95],['hf',430,175],['uf',506,135],['smb',576,95],['smb',576,175],['fw',680,135],['rt',760,135],['sw',840,95],['sw',840,175],['ad',940,60],['sep',940,118],['rf',940,176]].forEach(function(n){out+=node(n[0],n[1],n[2]);});
+  out+=box(1008,44,166,200,'#7E80AE','Test environment · VMware');
+  [['sh',1016,70],['idx',1110,70],['mc',1064,150]].forEach(function(n){out+=node(n[0],n[1],n[2]);});
   out+=line('M100,44 V28 H342 V44','mg')+line('M122,187 H196','mg');
-  out+=line('M1036,100 H1108','')+line('M1084,180 V128','');
-  flow('M430,110 L392,150');flow('M430,190 L392,150');
-  [[110],[190]].forEach(function(r){var y=r[0];out+=seg(558,y,620,150,'p1')+seg(478,y,510,y,'p1')+seg(478,y,620,150,'p2');});
-  out+=seg(668,150,700,150)+seg(748,150,780,110)+seg(748,150,780,190);
-  [[110,75],[110,133],[190,133],[190,191]].forEach(function(r){out+=seg(828,r[0],880,r[1]);});
+  out+=line('M1064,85 H1110','')+line('M1088,150 V85','');
+  flow('M430,110 L392,150');flow('M430,190 L392,150');flow('M506,150 L478,110');flow('M506,150 L478,190');
+  [110,190].forEach(function(y){out+=seg(624,y,680,150,'p1')+seg(576,y,554,150,'p1')+seg(478,y,506,150);});
+  out+=seg(554,150,680,150,'p2')+seg(728,150,760,150)+seg(808,150,840,110)+seg(808,150,840,190);
+  [[110,75],[110,133],[190,133],[190,191]].forEach(function(r){out+=seg(888,r[0],940,r[1]);});
   out+=line('M342,244 V314','ms');
 
   out+='</g><g class="sg" data-site="ash">';
   /* ---------- Ashburn ---------- */
   out+=site(10,292,1180,150)+'<text class="site-name" x="40" y="380">Ashburn COLO</text>';
   out+=box(300,314,220,100,'#6FB7FF','Indexing tier · multisite cluster');
-  [[312,346],[372,346],[432,346],['hf',560,318],['hf',560,382]].forEach(function(n){if(n.length==2)out+=node('idx',n[0],n[1]);else out+=node(n[0],n[1],n[2]);});
-  [['smb',630,318],['smb',630,382],['fw',1050,350],['rt',985,350],['sw',920,318],['sw',920,382],['srv',1115,350]].forEach(function(n){out+=node(n[0],n[1],n[2]);});
-  out+=box(720,312,170,56,'#7E80AE','DMZ 1')+box(720,376,170,56,'#7E80AE','DMZ 2');
-  [[726,325],[776,325],[826,325],[726,389]].forEach(function(n){out+=node('srv',n[0],n[1]);});
-  flow('M560,333 L500,364');flow('M560,397 L500,364');
-  out+=seg(608,333,630,333,'p1')+seg(608,397,630,397,'p1')+seg(678,333,720,340,'p1')+seg(678,397,720,404,'p1');
-  out+=seg(608,333,720,340,'p2')+seg(608,397,720,404,'p2');
-  out+=seg(890,340,920,333)+seg(890,404,920,397)+seg(890,340,920,397)+seg(890,404,920,333);
-  out+=seg(968,333,985,365)+seg(968,397,985,365)+seg(1033,365,1050,365)+seg(1098,365,1115,365);
-
+  [[312,346],[372,346],[432,346],['hf',546,318],['hf',546,382],['uf',612,350]].forEach(function(n){if(n.length==2)out+=node('idx',n[0],n[1]);else out+=node(n[0],n[1],n[2]);});
+  [['smb',680,318],['smb',680,382],['sw',944,318],['sw',944,382],['rt',1006,350],['fw',1068,350],['srv',1128,350]].forEach(function(n){out+=node(n[0],n[1],n[2]);});
+  out+=box(758,312,162,56,'#7E80AE','DMZ 1')+box(758,376,162,56,'#7E80AE','DMZ 2');
+  [[764,325],[814,325],[864,325],[764,389]].forEach(function(n){out+=node('srv',n[0],n[1]);});
+  flow('M546,333 L500,364');flow('M546,397 L500,364');flow('M612,365 L594,333');flow('M612,365 L594,397');
+  out+=seg(612,365,594,333)+seg(612,365,594,397);
+  out+=seg(680,333,660,365,'p1')+seg(680,397,660,365,'p1')+seg(728,333,758,340,'p1')+seg(728,397,758,404,'p1');
+  out+=seg(660,365,758,340,'p2')+seg(660,365,758,404,'p2');
+  out+=seg(920,340,944,333)+seg(920,404,944,397)+seg(920,340,944,397)+seg(920,404,944,333);
+  out+=seg(992,333,1006,365)+seg(992,397,1006,365)+seg(1054,365,1068,365)+seg(1116,365,1128,365);
   out+='</g>';
   /* ---------- Boston (m=0) and London (m=1, mirrored) ---------- */
   function remote(m,name){
     var X=function(x){return m?1200-x:x;}, N=function(x){return m?1200-x-W:x;}, s=function(a,b,c,d,k){return seg(X(a),b,X(c),d,k);};
     out+='<g class="sg" data-site="'+(m?'lon':'bos')+'">'+site(m?615:10,454,575,226)+'<text class="site-name" x="'+(m?1176:24)+'" y="480" text-anchor="'+(m?'end':'start')+'">'+name+'</text>';
-    [['fw',30,530],['srv',30,605],['rt',100,565],['sw',170,520],['sw',170,610],['rf',250,500],['srv',250,585],['smb',370,520],['smb',370,610],['hf',470,520],['hf',470,610]].forEach(function(n){out+=node(n[0],N(n[1]),n[2]);});
+    [['fw',30,530],['srv',30,605],['rt',100,565],['sw',170,520],['sw',170,610],['rf',250,500],['srv',250,585],['smb',336,520],['smb',336,610],['uf',404,565],['hf',496,520],['hf',496,610]].forEach(function(n){out+=node(n[0],N(n[1]),n[2]);});
     out+=s(54,560,54,605)+s(78,545,100,580)+s(148,580,170,535)+s(148,580,170,625);
     out+=s(218,535,250,515)+s(218,535,250,600)+s(218,625,250,515)+s(218,625,250,600);
-    out+=s(298,515,370,535,'p1')+s(298,600,370,625,'p1')+s(418,535,470,535,'p1')+s(418,625,470,625,'p1');
-    out+=s(298,515,470,535,'p2')+s(298,600,470,625,'p2');
+    out+=s(298,515,336,535,'p1')+s(298,600,336,625,'p1')+s(384,535,404,580,'p1')+s(384,625,404,580,'p1');
+    out+=s(298,515,404,580,'p2')+s(298,600,404,580,'p2');
+    out+=s(452,580,496,535)+s(452,580,496,625);
+    flow('M'+X(452)+',580 L'+X(496)+',535');flow('M'+X(452)+',580 L'+X(496)+',625');
     var y=m?446:448;
-    flow('M'+X(494)+',520 V'+y+' H405 V414');
-    flow('M'+X(518)+',625 H'+X(550)+' V'+y+' H405 V414');
+    flow('M'+X(520)+',520 V'+y+' H405 V414');
+    flow('M'+X(544)+',625 H'+X(568)+' V'+y+' H405 V414');
     out+='</g>';
   }
   remote(0,'Boston');remote(1,'London');
@@ -1034,8 +1036,8 @@
       c.appendChild(a);svg.appendChild(c);}
   });
 
-  var notes={1:'Phase 1: hosts and network devices feed eight SMB .LOG servers, one pair per site, which hand logs to the heavy forwarders. Those forward to the indexers.',
-             2:'Phase 2: the eight SMB log servers are retired. Heavy forwarders sit directly on each site\u2019s network path, so there is one less hop to run and secure.'};
+  var notes={1:'Phase 1: hosts and network devices feed eight SMB .LOG servers, one pair per site. A universal forwarder relays them to two heavy forwarders, which parse the data and forward it to the indexers.',
+             2:'Phase 2: the eight SMB log servers are retired. At each site a universal forwarder takes data directly off the network path and relays it to the heavy forwarders for parsing, one less hop to run and secure.'};
   var note=document.getElementById('tp-note'); note.textContent=notes[1];
   document.querySelectorAll('.tp-toggle .tp-btn').forEach(function(b){b.addEventListener('click',function(){
     svg.setAttribute('data-phase',b.dataset.phase); note.textContent=notes[b.dataset.phase];
@@ -1054,11 +1056,11 @@
   var svg=document.getElementById('tp'); if(!svg) return;
   var note=document.getElementById('tp-note'), NS='http://www.w3.org/2000/svg', timers=[];
   var caps={
-   sf:'San Francisco is the core site: a three-node search head cluster, three clustered indexers, and the whole management tier (CM, LM, MC, DS, SHC), plus a test environment isolated on its own VMware host.',
+   sf:'San Francisco is the core site: a three-node search head cluster, three clustered indexers, and the whole management tier (CM, LM, MC, DS, SHC), plus a test environment isolated on its own VMware host. Local data flows through a universal forwarder to two heavy forwarders.',
    ash:'Ashburn COLO holds the other half of the multisite indexer cluster and receives data from every remote site. It also hosts two DMZs with generic servers behind a firewall.',
-   bos:'Boston is an edge site: firewall, router, switches, an RFID reader and servers. Two heavy forwarders ship everything to the Ashburn indexers.',
-   lon:'London mirrors Boston: the same edge layout with two heavy forwarders sending to the Ashburn indexers.'};
-  var phaseNote=function(){return svg.getAttribute('data-phase')==='1'?'Phase 1: hosts and network devices feed eight SMB .LOG servers, one pair per site, which hand logs to the heavy forwarders. Those forward to the indexers.':'Phase 2: the eight SMB log servers are retired. Heavy forwarders sit directly on each site\u2019s network path, so there is one less hop to run and secure.';};
+   bos:'Boston is an edge site: firewall, router, switches, an RFID reader and servers. A universal forwarder relays data to two heavy forwarders, which parse it and ship it to the Ashburn indexers.',
+   lon:'London mirrors Boston: a universal forwarder relays to two heavy forwarders, which parse the data and send it to the Ashburn indexers.'};
+  var phaseNote=function(){return svg.getAttribute('data-phase')==='1'?'Phase 1: hosts and network devices feed eight SMB .LOG servers, one pair per site. A universal forwarder relays them to two heavy forwarders, which parse the data and forward it to the indexers.':'Phase 2: the eight SMB log servers are retired. At each site a universal forwarder takes data directly off the network path and relays it to the heavy forwarders for parsing, one less hop to run and secure.';};
   function refresh(){var k=svg.getAttribute('data-site'); note.textContent=k?caps[k]:phaseNote();}
   function stop(){timers.forEach(clearTimeout);timers=[];svg.querySelectorAll('.trace').forEach(function(t){t.remove();});}
   document.querySelectorAll('[data-site]').forEach(function(b){ if(b.tagName!=='BUTTON') return; b.addEventListener('click',function(){
@@ -1069,11 +1071,12 @@
     stop(); svg.setAttribute('data-site','');
     document.querySelectorAll('.tp-tour [data-site]').forEach(function(o){o.setAttribute('aria-pressed',o.dataset.site==='');});
     var p1=svg.getAttribute('data-phase')==='1';
-    var path='M298,515 '+(p1?'L370,535 L418,535 ':'')+'L470,535 L494,535 V448 H405 V414 L396,376 L342,314 V244 L342,191 L262,191';
+    var path='M298,515 '+(p1?'L336,535 L384,535 L404,580 ':'L404,580 ')+'L452,580 L496,535 L520,535 V448 H405 V414 L396,376 L342,314 V244 L342,191 L262,191';
     var steps=[[0,'A sensor event is logged in Boston by the RFID reader.'],
-     [1300,p1?'Phase 1: it lands on an SMB .LOG server first.':'Phase 2: the heavy forwarder picks it up directly.'],
-     [2800,'The heavy forwarder ships it across the WAN to the Ashburn indexers.'],
-     [4600,'The multisite cluster replicates it to the indexers in San Francisco.'],
+     [1000,p1?'Phase 1: it lands on an SMB .LOG server first.':'Phase 2: no SMB hop. It goes straight to the site forwarder.'],
+     [1900,'A universal forwarder picks it up and relays it as the site\u2019s intermediate forwarder.'],
+     [3000,'The heavy forwarder parses it and ships it across the WAN to the Ashburn indexers.'],
+     [4800,'The multisite cluster replicates it to the indexers in San Francisco.'],
      [6200,'A search head in SF can now search it. From raw event to answer.']];
     var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     steps.forEach(function(st){ if(reduce && st[0]<6200) return; timers.push(setTimeout(function(){note.textContent=st[1];},reduce?0:st[0])); });
