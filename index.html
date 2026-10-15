@@ -419,6 +419,69 @@
   .wf-svg .lab { font:600 13px 'JetBrains Mono',monospace; text-anchor:middle; }
   .wf-callout { display:flex; gap:14px; align-items:center; margin-top:14px; padding:14px 18px; border:1.5px solid var(--text); background:var(--panel); color:var(--text); font-size:15px; font-weight:500; line-height:1.4; }
   .wf-callout span { flex:none; background:var(--text); color:var(--bg); font:700 11px 'JetBrains Mono',monospace; letter-spacing:.12em; padding:4px 9px; }
+
+  /* ---- Hands-on build (lab) ---- */
+  #lab .tp-frame { background-color:#0A0A0A; background-image:radial-gradient(#262626 1px, transparent 1px); background-size:22px 22px; }
+  .lb { display:block; width:100%; min-width:760px; height:auto; }
+  .lb .nd rect { fill-opacity:.12; stroke-width:1.5; transition:all .4s; }
+  .lb .nd text { font-family:'JetBrains Mono',monospace; text-anchor:middle; }
+  .lb .nd .t1 { font-size:13px; font-weight:600; }
+  .lb .nd .t2 { font-size:11px; fill:#C2C3E4; }
+  .lb .uf rect { stroke:#FFB067; fill:#FFB067; } .lb .uf .t1 { fill:#FFB067; }
+  .lb .ix rect { stroke:#6FB7FF; fill:#6FB7FF; } .lb .ix .t1 { fill:#6FB7FF; }
+  .lb .sh rect { stroke:#7BE0A0; fill:#7BE0A0; } .lb .sh .t1 { fill:#7BE0A0; }
+  .lb .mg rect { stroke:#A78BFF; fill:#A78BFF; } .lb .mg .t1 { fill:#C9B8FF; }
+  .lb .cl { fill:none; stroke:#6FB7FF; stroke-width:1.2; stroke-dasharray:5 4; }
+  .lb .cl-l { font:10.5px 'JetBrains Mono',monospace; fill:#9294BC; letter-spacing:.06em; }
+  .lb .fl { stroke:#4FE3D4; stroke-width:1.6; fill:none; opacity:.55; }
+  .lb .lg { stroke:#4FE3D4; stroke-width:1.2; fill:none; opacity:.4; stroke-dasharray:3 4; }
+  .lb .ct { stroke:#A78BFF; stroke-width:1.5; fill:none; stroke-dasharray:6 5; }
+  .lb .lbl { font:11px 'JetBrains Mono',monospace; fill:#9294BC; }
+  .lb .lbl.c { text-anchor:middle; }
+  .lb .bad { fill:#FF6B81; font:600 11px 'JetBrains Mono',monospace; text-anchor:middle; letter-spacing:.08em; }
+  .lb .dot { fill:#4FE3D4; }
+  .lb .vw { transition:opacity .45s; }
+  .lb[data-view="data"] .v-ctrl, .lb[data-view="data"] .v-fail,
+  .lb[data-view="ctrl"] .v-data, .lb[data-view="ctrl"] .v-fail,
+  .lb[data-view="fail"] .v-data, .lb[data-view="fail"] .v-ctrl { opacity:0; pointer-events:none; }
+  .lb[data-view="fail"] .idx3 rect { stroke:#FF6B81; fill:#FF6B81; fill-opacity:.05; stroke-dasharray:4 4; }
+  .lb[data-view="fail"] .idx3 .t1 { fill:#FF6B81; }
+  .lb[data-view="fail"] .idx3 .t2 { opacity:.35; }
+  #lab .wf-steps { grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+  .lb-sub { font-size:clamp(20px,2.4vw,24px) !important; margin:64px 0 8px; }
+  .lb-lede { font-size:15px; max-width:70ch; margin-bottom:22px; }
+  .lb-dec { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
+  .lb-dec > div { border:1px solid var(--border-soft); background:var(--panel); padding:18px 20px; }
+  .lb-dec b { display:block; font:600 15.5px 'Space Grotesk',sans-serif; color:var(--text); margin-bottom:6px; }
+  .lb-dec p { font-size:14px; }
+  .lb-inc { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+  .lb-card { border:1px solid var(--border-soft); background:var(--panel); padding:20px 22px; display:flex; flex-direction:column; gap:12px; transition:border-color .2s ease; }
+  .lb-card:hover { border-color:var(--text-faint); }
+  .lb-card h3 { font-size:16.5px; }
+  .lb-card dl { margin:0; display:grid; grid-template-columns:62px 1fr; gap:8px 12px; font-size:14px; }
+  .lb-card dt { font:600 10.5px 'JetBrains Mono',monospace; color:var(--text-faint); letter-spacing:.12em; text-transform:uppercase; padding-top:3px; }
+  .lb-card dd { margin:0; color:var(--text-dim); }
+  .lb-tag { align-self:flex-start; font:600 10.5px 'JetBrains Mono',monospace; letter-spacing:.12em; text-transform:uppercase; padding:3px 8px; border:1px solid var(--border); color:var(--text-dim); }
+  .lb-tag.ok { border-color:#7BE0A0; color:#7BE0A0; }
+  .lb-tag.open { border-color:#FFB067; color:#FFB067; }
+  #lab code { font-family:'JetBrains Mono',monospace; font-size:.9em; color:var(--text); background:#1C1C1C; padding:1px 5px; }
+  .lb-table-wrap { overflow-x:auto; border:1px solid var(--border-soft); }
+  .lb-ver { width:100%; min-width:620px; border-collapse:collapse; font-size:14px; background:var(--panel); }
+  .lb-ver th { text-align:left; font:600 10.5px 'JetBrains Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--text-faint); padding:12px 16px; border-bottom:1px solid var(--border); }
+  .lb-ver td { padding:13px 16px; border-bottom:1px solid var(--border-soft); color:var(--text-dim); vertical-align:top; }
+  .lb-ver tr:last-child td { border-bottom:0; }
+  .lb-ver td:first-child { color:var(--text); font-weight:500; width:28%; }
+  .lb-ver .res { font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#7BE0A0; white-space:nowrap; }
+  .lb-hard { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:28px; }
+  .lb-snip details { border:1px solid var(--border-soft); background:var(--panel); margin-bottom:10px; }
+  .lb-snip summary { cursor:pointer; padding:14px 18px; font:500 13.5px 'JetBrains Mono',monospace; color:var(--text); list-style:none; display:flex; justify-content:space-between; gap:12px; }
+  .lb-snip summary::-webkit-details-marker { display:none; }
+  .lb-snip summary::after { content:"+"; color:var(--text-faint); }
+  .lb-snip details[open] summary::after { content:"−"; }
+  .lb-snip summary span { color:var(--text-faint); font-weight:400; }
+  .lb-snip pre { margin:0; padding:4px 18px 18px; overflow-x:auto; font:12.5px/1.65 'JetBrains Mono',monospace; color:var(--text-dim); }
+  .lb-snip pre .cm { color:var(--text-faint); }
+  @media (prefers-reduced-motion: reduce) { .lb .dot { display:none; } .lb .vw, .lb .nd rect { transition:none; } }
 </style>
 </head>
 <body>
@@ -432,6 +495,7 @@
       <a href="#skills">Toolkit</a>
       <a href="#pipeline">Pipeline</a>
       <a href="#topology">Topology</a>
+      <a href="#lab">Build</a>
       <a href="#projects">Work</a>
       <a href="#contact">Contact</a>
       <a href="#" class="btn-resume" id="resumeBtnNav">Résumé</a>
@@ -681,6 +745,264 @@
         <div class="tp-stat"><b>5</b><span>management nodes: CM, LM, MC, DS, SHC</span></div>
       </div>
       <p class="pipeline-note mono reveal">At every site, data goes through a universal forwarder, then a heavy forwarder for parsing. Boston and London forward to the Ashburn indexers, and the SF and Ashburn indexers form one multisite cluster. The test environment is isolated in its own VMware host.</p>
+    </div>
+  </section>
+
+  <section id="lab">
+    <div class="wrap-wide">
+      <div class="section-head reveal"><span class="section-kicker">HANDS-ON BUILD</span><h2>From eight bare Linux servers to a clustered Splunk deployment</h2></div>
+      <p class="about-text reveal" style="margin-bottom:28px;">The design above is on paper. This one I built. In a Splunk architecture practical lab I got eight Ubuntu servers with nothing installed and a customer’s list of requirements: three dashboards, clean data, high availability, full monitoring and a deployment that scales. Everything below was installed, configured and verified by hand, including the parts that broke.</p>
+
+      <div class="tp-controls">
+        <div class="tp-toggle" role="group" aria-label="Diagram view">
+          <button class="tp-btn" data-lbview="data" aria-pressed="true">Data in</button>
+          <button class="tp-btn" data-lbview="ctrl" aria-pressed="false">Control</button>
+          <button class="tp-btn" data-lbview="fail" aria-pressed="false">Failover test</button>
+        </div>
+        <div class="tp-legend" aria-hidden="true">
+          <span class="tp-btn tp-leg" style="--c:#FFB067;cursor:default"><i></i>Forwarders</span>
+          <span class="tp-btn tp-leg" style="--c:#6FB7FF;cursor:default"><i></i>Indexers</span>
+          <span class="tp-btn tp-leg" style="--c:#7BE0A0;cursor:default"><i></i>Search</span>
+          <span class="tp-btn tp-leg" style="--c:#A78BFF;cursor:default"><i></i>Management</span>
+        </div>
+      </div>
+      <div class="tp-frame">
+        <svg id="lb" class="lb" viewBox="0 0 980 500" data-view="data" role="img" aria-label="Eight-node Splunk deployment: two universal forwarders send to a three-indexer cluster; a search head, a cluster manager and a combined license manager, deployment server and monitoring console manage it">
+          <defs>
+            <marker id="lbm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#A78BFF"/></marker>
+            <marker id="lbc" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4FE3D4"/></marker>
+          </defs>
+
+          <!-- data in -->
+          <g class="vw v-data">
+            <path class="fl" d="M240,145 C330,145 330,140 410,140"/>
+            <path class="fl" d="M240,145 C330,145 330,260 410,260"/>
+            <path class="fl" d="M240,145 C330,145 330,380 410,380"/>
+            <path class="fl" d="M240,365 C330,365 330,140 410,140"/>
+            <path class="fl" d="M240,365 C330,365 330,260 410,260"/>
+            <path class="fl" d="M240,365 C330,365 330,380 410,380"/>
+            <path class="lg" d="M760,142 H612" marker-end="url(#lbc)"/>
+            <path class="lg" d="M760,262 H612" marker-end="url(#lbc)"/>
+            <path class="lg" d="M760,395 H612" marker-end="url(#lbc)"/>
+            <text class="lbl c" x="685" y="205">own logs too</text>
+            <text class="lbl" x="30" y="432">:9997 · auto load-balanced · acknowledged</text>
+          </g>
+
+          <!-- control -->
+          <g class="vw v-ctrl">
+            <path class="ct" d="M760,142 H612" marker-end="url(#lbm)"/>
+            <text class="lbl c" x="685" y="132">search</text>
+            <path class="ct" d="M760,262 H612" marker-end="url(#lbm)"/>
+            <text class="lbl c" x="685" y="252">config bundle</text>
+            <path class="ct" d="M760,395 H612" marker-end="url(#lbm)"/>
+            <text class="lbl c" x="685" y="385">license · monitor</text>
+            <path class="ct" d="M950,262 H968 V20 H135 V103" marker-end="url(#lbm)"/>
+            <text class="lbl" x="420" y="38">indexer discovery: forwarders ask CM1 where the indexers are</text>
+            <path class="ct" d="M855,440 V484 H16 V145 H28" marker-end="url(#lbm)"/>
+            <path class="ct" d="M16,365 H28" marker-end="url(#lbm)"/>
+            <text class="lbl c" x="495" y="477">deployment server: apps pushed by server class</text>
+          </g>
+
+          <!-- failover -->
+          <g class="vw v-fail">
+            <path class="fl" d="M240,145 C330,145 330,140 410,140"/>
+            <path class="fl" d="M240,145 C330,145 330,260 410,260"/>
+            <path class="fl" d="M240,365 C330,365 330,140 410,140"/>
+            <path class="fl" d="M240,365 C330,365 330,260 410,260"/>
+            <path class="ct" d="M760,142 H582" marker-end="url(#lbm)"/>
+            <path class="ct" d="M760,142 C690,142 660,260 582,260" marker-end="url(#lbm)"/>
+            <text class="lbl c" x="700" y="300">every event</text>
+            <text class="lbl c" x="700" y="316">still searchable</text>
+            <text class="bad" x="495" y="432">✕ STOPPED</text>
+          </g>
+
+          <!-- nodes -->
+          <rect class="cl" x="380" y="60" width="230" height="400" rx="8"/>
+          <text class="cl-l" x="390" y="80">INDEXER CLUSTER · RF 2 / SF 2</text>
+
+          <g class="nd uf"><rect x="30" y="105" width="210" height="80" rx="6"/>
+            <text class="t1" x="135" y="128">UF1 · forwarder</text>
+            <text class="t2" x="135" y="150">/var/log → os</text>
+            <text class="t2" x="135" y="168">www1–3 access.log → network</text></g>
+          <g class="nd uf"><rect x="30" y="325" width="210" height="80" rx="6"/>
+            <text class="t1" x="135" y="348">UF2 · forwarder</text>
+            <text class="t2" x="135" y="370">IronPort web + mail → network</text>
+            <text class="t2" x="135" y="388">game XML → gamelog</text></g>
+
+          <g class="nd ix"><rect x="410" y="110" width="170" height="60" rx="6"/>
+            <text class="t1" x="495" y="134">IDX1</text><text class="t2" x="495" y="154">os · network · gamelog</text></g>
+          <g class="nd ix"><rect x="410" y="230" width="170" height="60" rx="6"/>
+            <text class="t1" x="495" y="254">IDX2</text><text class="t2" x="495" y="274">os · network · gamelog</text></g>
+          <g class="nd ix idx3"><rect x="410" y="350" width="170" height="60" rx="6"/>
+            <text class="t1" x="495" y="374">IDX3</text><text class="t2" x="495" y="394">os · network · gamelog</text></g>
+
+          <g class="nd sh"><rect x="760" y="110" width="190" height="64" rx="6"/>
+            <text class="t1" x="855" y="136">SH1 · search head</text><text class="t2" x="855" y="156">6 reports · 3 dashboards</text></g>
+          <g class="nd mg"><rect x="760" y="230" width="190" height="64" rx="6"/>
+            <text class="t1" x="855" y="256">CM1 · cluster manager</text><text class="t2" x="855" y="276">replication · bundles</text></g>
+          <g class="nd mg"><rect x="760" y="350" width="190" height="90" rx="6"/>
+            <text class="t1" x="855" y="374">MC1</text>
+            <text class="t2" x="855" y="394">license manager</text>
+            <text class="t2" x="855" y="410">deployment server</text>
+            <text class="t2" x="855" y="426">monitoring console</text></g>
+        </svg>
+      </div>
+      <p class="tp-phase-note" id="lb-note" aria-live="polite"></p>
+
+      <div class="tp-stats">
+        <div class="tp-stat"><b>8</b><span>Splunk instances: 6 Enterprise servers and 2 universal forwarders</span></div>
+        <div class="tp-stat"><b>3</b><span>clustered indexers, replication factor 2 and search factor 2</span></div>
+        <div class="tp-stat"><b>200K+</b><span>events validated across the os, network and gamelog indexes</span></div>
+        <div class="tp-stat"><b>917/917</b><span>multi-line XML events broken at the right boundary</span></div>
+        <div class="tp-stat"><b>6 → 3</b><span>saved reports powering three dashboards</span></div>
+      </div>
+
+      <h2 class="lb-sub reveal">How it was built</h2>
+      <p class="lb-lede">Six stages, each checked before the next one started.</p>
+      <div class="wf-steps">
+        <div class="wf-step"><em>01</em><h3>Baseline every node</h3><p>Installed as a dedicated non-root user and started by systemd at boot. The admin account was seeded from a file so no password hit the shell history. Splunk Web runs on HTTPS with TLS 1.2 as the minimum.</p></div>
+        <div class="wf-step"><em>02</em><h3>License and cluster</h3><p>A license manager on MC1 and a cluster manager on CM1 with three peers. The indexes and the receiving port were pushed to every indexer as one config bundle, applied with rolling restarts so search never stopped.</p></div>
+        <div class="wf-step"><em>03</em><h3>Search and internal logs</h3><p>SH1 joined the cluster as a search head. MC1, CM1 and SH1 send their own logs to the indexers, so the whole deployment is searchable and replicated in one place.</p></div>
+        <div class="wf-step"><em>04</em><h3>Forwarders at scale</h3><p>Both forwarders are managed by the deployment server: one outputs app for every forwarder, plus small input apps per role, layered by server class. Indexer discovery means no forwarder ever lists an indexer by hand.</p></div>
+        <div class="wf-step"><em>05</em><h3>Onboard data, test first</h3><p>Every source was previewed before anything touched a production index. Each sourcetype got explicit line breaking, timestamp format and time zone, plus an event breaker on the forwarder. The XML header is dropped at index time.</p></div>
+        <div class="wf-step"><em>06</em><h3>Report, monitor, prove</h3><p>Search-time field extractions, six reports and three dashboards, all shared globally and tested as a non-admin user. The Monitoring Console runs in distributed mode, and high availability was proven by stopping an indexer.</p></div>
+      </div>
+
+      <h2 class="lb-sub reveal">Design decisions</h2>
+      <p class="lb-lede">The choices that make this scale from 3 indexers and 2 forwarders to 100 and 500.</p>
+      <div class="lb-dec">
+        <div><b>Indexer discovery, not server lists</b><p>Forwarders ask the cluster manager for the current indexers. Adding an indexer needs no change on any forwarder.</p></div>
+        <div><b>Layered server classes</b><p>One class gives every forwarder its outputs, and small classes add inputs by role. A new forwarder matches a name pattern and configures itself.</p></div>
+        <div><b>Everything in apps, never in <code>default/</code></b><p>Every setting lives in a named app, so it is portable, upgrade-safe and easy to put under version control.</p></div>
+        <div><b>Parsing and fields kept apart</b><p>Index-time rules ship to the indexers in the cluster bundle. Search-time extractions live in one app on the search head.</p></div>
+        <div><b>Normalized fields over text matching</b><p>Failed logins are defined by the add-on’s <code>action=failure</code>, not by one log message, so the report survives any change in wording.</p></div>
+        <div><b>Ask the customer first</b><p>Retention, what counts as a web error and how hosts are named were asked, answered and written down before they were built.</p></div>
+      </div>
+
+      <h2 class="lb-sub reveal">What broke, and how I fixed it</h2>
+      <p class="lb-lede">The useful part of any build. Each of these looked fine at first glance.</p>
+      <div class="lb-inc">
+        <div class="lb-card">
+          <span class="lb-tag ok">Fixed</span>
+          <h3>The biggest log file was never indexed</h3>
+          <dl>
+            <dt>Symptom</dt><dd><code>/var/log/syslog</code> was missing from search, with no error anywhere in Splunk Web.</dd>
+            <dt>Cause</dt><dd>Its first 256 bytes matched <code>kern.log</code>, so the forwarder decided it had already read the file.</dd>
+            <dt>Fix</dt><dd>Salted the file checksum with the path (<code>crcSalt</code>), let it re-read, then deleted the older copy by index time so nothing was counted twice.</dd>
+          </dl>
+        </div>
+        <div class="lb-card">
+          <span class="lb-tag ok">Fixed</span>
+          <h3>Guessed sourcetypes and four names for one host</h3>
+          <dl>
+            <dt>Symptom</dt><dd>Auto-named sourcetypes, including one called <code>too_small</code>, and one server showing under four different host names.</dd>
+            <dt>Cause</dt><dd>No explicit sourcetypes, and the syslog sourcetype rewrites the host from text inside each event.</dd>
+            <dt>Fix</dt><dd>Assigned sourcetypes by source on the forwarder, turned off the host rewrite, excluded binary and unreadable files, and re-indexed cleanly.</dd>
+          </dl>
+        </div>
+        <div class="lb-card">
+          <span class="lb-tag ok">Fixed</span>
+          <h3>A field that never appeared</h3>
+          <dl>
+            <dt>Symptom</dt><dd><code>domain</code> was always empty, while <code>url</code> and <code>user</code> worked.</dd>
+            <dt>Cause</dt><dd>Search-time extractions run in alphabetical order, so <code>domain</code> tried to read <code>url</code> before it existed.</dd>
+            <dt>Fix</dt><dd>Extracted the domain by position from the raw event, so it depends on nothing else.</dd>
+          </dl>
+        </div>
+        <div class="lb-card">
+          <span class="lb-tag ok">Fixed</span>
+          <h3>Zero failed logins on an internet-facing server</h3>
+          <dl>
+            <dt>Symptom</dt><dd>A search for “Failed password” returned nothing, ever.</dd>
+            <dt>Cause</dt><dd>Password logins are disabled, so SSH logs bots as invalid users instead. A quick grep even matched its own sudo log line.</dd>
+            <dt>Fix</dt><dd>Built the report on the add-on’s normalized <code>action=failure</code>. A test login from another server showed up on the dashboard within a minute.</dd>
+          </dl>
+        </div>
+        <div class="lb-card">
+          <span class="lb-tag ok">Fixed</span>
+          <h3>Apps delivered but not running</h3>
+          <dl>
+            <dt>Symptom</dt><dd>The forwarder had its new input apps, but no data arrived.</dd>
+            <dt>Cause</dt><dd>The restart option was not saved on the server class, so the forwarder never loaded them.</dd>
+            <dt>Fix</dt><dd>Checked file times against service uptime, set the restart flag, and added “confirm the restart” to every rollout.</dd>
+          </dl>
+        </div>
+        <div class="lb-card">
+          <span class="lb-tag open">Open</span>
+          <h3>Encrypting forwarder traffic</h3>
+          <dl>
+            <dt>Done</dt><dd>Built a private CA and issued a certificate to all eight servers, with every name and IP each one answers to.</dd>
+            <dt>Issue</dt><dd>With port 9997 on TLS, the 10.6 forwarders could not build a TLS context. The logs showed the settings belong in the global output stanza when indexer discovery is used, but that alone did not fix it.</dd>
+            <dt>Call</dt><dd>Rolled back within minutes with no data lost, since forwarders resume from their file position. The next attempt goes on a separate test port so the main flow is never interrupted.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <h2 class="lb-sub reveal">Requirements, verified</h2>
+      <p class="lb-lede">Each requirement checked with a search or a test, not taken on trust.</p>
+      <div class="lb-table-wrap">
+        <table class="lb-ver">
+          <thead><tr><th>Requirement</th><th>How it was checked</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td>Three dashboards</td><td>Every panel references a saved report. All three opened and loaded data as an ordinary non-admin user.</td><td class="res">✓ pass</td></tr>
+            <tr><td>Parse each format correctly</td><td>917 of 917 XML events start at <code>&lt;Interceptor&gt;</code>. Newest timestamps match the server clock in UTC. Host, source and sourcetype checked per file.</td><td class="res">✓ pass</td></tr>
+            <tr><td>No bad or extraneous data</td><td>Binary, compressed and unreadable logs excluded. XML header dropped. Early bad events deleted and re-indexed cleanly.</td><td class="res">✓ pass</td></tr>
+            <tr><td>High availability</td><td>Stopped an indexer outright. Event counts across all three indexes were identical before and after, and the cluster healed itself.</td><td class="res">✓ pass</td></tr>
+            <tr><td>Monitor the environment</td><td>Monitoring Console in distributed mode shows all six servers and both forwarders.</td><td class="res">✓ pass</td></tr>
+            <tr><td>Scalable deployment</td><td>Cluster bundle for indexers, deployment server with server classes for forwarders, indexer discovery in between.</td><td class="res">✓ pass</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="lb-sub reveal">Hardening status</h2>
+      <div class="lb-hard">
+        <div><div class="skill-cat-label">Done</div><div class="chips">
+          <span class="chip">Non-root service user</span><span class="chip">HTTPS Splunk Web</span><span class="chip">TLS 1.2 minimum</span>
+          <span class="chip">Encrypted keys at rest</span><span class="chip">Private CA + per-host certs</span><span class="chip">Least-privilege log access</span><span class="chip">KV store off on indexers</span></div></div>
+        <div><div class="skill-cat-label">Documented with the customer</div><div class="chips">
+          <span class="chip">Retention left at defaults</span><span class="chip">polkit scope on Ubuntu 22.04</span><span class="chip">iowait on lab-sized disks</span></div></div>
+        <div><div class="skill-cat-label">In progress</div><div class="chips">
+          <span class="chip">TLS on forwarding (9997)</span><span class="chip">Certificate verification between servers</span></div></div>
+      </div>
+
+      <h2 class="lb-sub reveal">From the runbook</h2>
+      <p class="lb-lede">A few of the configs that did the heavy lifting. Keys are placeholders.</p>
+      <div class="lb-snip">
+        <details>
+          <summary>outputs.conf <span>every forwarder · deployed by server class</span></summary>
+<pre><span class="cm"># Ask the cluster manager where the indexers are</span>
+[indexer_discovery:cluster1]
+manager_uri  = https://CM1:8089
+pass4SymmKey = &lt;discovery key&gt;
+
+[tcpout:cluster1_group]
+indexerDiscovery = cluster1
+useACK = true            <span class="cm"># indexers confirm every block</span>
+
+[tcpout]
+defaultGroup = cluster1_group</pre>
+        </details>
+        <details>
+          <summary>props.conf <span>indexers · one XML block per event</span></summary>
+<pre>[dreamcrusher_xml]
+SHOULD_LINEMERGE = false
+LINE_BREAKER     = ([\r\n]+\s*)&lt;Interceptor&gt;
+TIME_PREFIX      = &lt;ActionDate&gt;
+TIME_FORMAT      = %Y-%m-%d
+TZ               = UTC
+SEDCMD-strip_footer   = s/\s*&lt;\/dataroot&gt;\s*$//
+TRANSFORMS-drop_header = dreamcrusher_drop_header   <span class="cm"># sends &lt;?xml…&gt; to nullQueue</span></pre>
+        </details>
+        <details>
+          <summary>inputs.conf <span>UF1 · /var/log via the Unix add-on</span></summary>
+<pre>[monitor:///var/log]
+disabled  = 0
+index     = os
+crcSalt   = &lt;SOURCE&gt;     <span class="cm"># syslog and kern.log start with identical bytes</span>
+blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$)</pre>
+        </details>
+      </div>
+      <p class="pipeline-note mono reveal">Built in a training lab on Splunk Enterprise 10.6 and Ubuntu 22.04. Internal hostnames, addresses and keys are left out on purpose.</p>
     </div>
   </section>
 
@@ -1047,13 +1369,34 @@
   var notes={1:'Phase 1: hosts and network devices feed eight SMB .LOG servers, one pair per site. A universal forwarder relays them to two heavy forwarders, which parse the data and forward it to the indexers.',
              2:'Phase 2: the eight SMB log servers are retired. At each site a universal forwarder takes data directly off the network path and relays it to the heavy forwarders for parsing, one less hop to run and secure.'};
   var note=document.getElementById('tp-note'); note.textContent=notes[1];
-  document.querySelectorAll('.tp-toggle .tp-btn').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.tp-toggle .tp-btn[data-phase]').forEach(function(b){b.addEventListener('click',function(){
     svg.setAttribute('data-phase',b.dataset.phase); note.textContent=notes[b.dataset.phase];
-    document.querySelectorAll('.tp-toggle .tp-btn').forEach(function(o){o.setAttribute('aria-pressed',o===b);});});});
+    document.querySelectorAll('.tp-toggle .tp-btn[data-phase]').forEach(function(o){o.setAttribute('aria-pressed',o===b);});});});
   document.querySelectorAll('.tp-leg').forEach(function(b){b.addEventListener('click',function(){
     var on=b.getAttribute('aria-pressed')==='true';
     document.querySelectorAll('.tp-leg').forEach(function(o){o.setAttribute('aria-pressed','false');});
     svg.setAttribute('data-focus',on?'':b.dataset.tier); if(!on) b.setAttribute('aria-pressed','true');});});
+})();
+
+(function(){
+  var svg=document.getElementById('lb'); if(!svg) return;
+  var NS='http://www.w3.org/2000/svg', note=document.getElementById('lb-note');
+  var notes={
+    data:'Data in: both forwarders spread their data across all three indexers on port 9997, and the indexers acknowledge every block, so nothing is lost in transit. SH1, CM1 and MC1 send their own logs to the indexers too.',
+    ctrl:'Control: CM1 pushes indexes, parsing rules and add-ons to every indexer as one bundle and tells forwarders where the indexers are. MC1 hands each forwarder its apps by server class, serves the license and runs the Monitoring Console.',
+    fail:'Failover test: IDX3 was stopped outright. Every event stayed searchable from SH1 and the counts matched before and after, because each bucket already had a second searchable copy. When IDX3 came back, the cluster healed itself.'};
+  note.textContent=notes.data;
+  var btns=document.querySelectorAll('[data-lbview]');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    svg.setAttribute('data-view',b.dataset.lbview); note.textContent=notes[b.dataset.lbview];
+    btns.forEach(function(o){o.setAttribute('aria-pressed',o===b);});});});
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  svg.querySelectorAll('path.fl').forEach(function(p,i){
+    for(var k=0;k<2;k++){var c=document.createElementNS(NS,'circle');c.setAttribute('r','3');c.setAttribute('class','dot');
+      var a=document.createElementNS(NS,'animateMotion');a.setAttribute('dur','2.8s');a.setAttribute('repeatCount','indefinite');
+      a.setAttribute('path',p.getAttribute('d'));a.setAttribute('begin',(-((i*0.3+k*1.4)%2.8)).toFixed(2)+'s');
+      c.appendChild(a);p.parentNode.appendChild(c);}
+  });
 })();
 
 (function(){var b=document.querySelectorAll('[data-wf]');b.forEach(function(x){x.addEventListener('click',function(){
