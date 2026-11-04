@@ -143,6 +143,8 @@
   .job-org { color: var(--cyan); font-size: 14px; margin-top: 4px; }
   .job-org .loc { color: var(--text-faint); }
   .job-card p.desc { margin-top: 16px; font-size: 15px; max-width: 68ch; }
+  .job-bullets { margin: 14px 0 0; padding-left: 18px; color: var(--text-dim, inherit); font-size: 14.5px; line-height: 1.6; }
+  .job-bullets li { margin: 4px 0; }
   .job-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .job-highlights span { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-dim); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; }
 
@@ -498,7 +500,7 @@
       <a href="#lab">Build</a>
       <a href="#projects">Work</a>
       <a href="#contact">Contact</a>
-      <a href="#" class="btn-resume" id="resumeBtnNav">Résumé</a>
+      <a href="Anh_Phan_Resume.pdf" class="btn-resume" id="resumeBtnNav" target="_blank" rel="noopener">Résumé</a>
     </nav>
   </div>
 </header>
@@ -508,13 +510,13 @@
     <div class="wrap-wide">
       <div class="hero-grid">
         <div>
-          <span class="kicker">SECURITY OPERATIONS · SIEM ENGINEERING</span>
+          <span class="kicker">SPLUNK ARCHITECTURE · SIEM ENGINEERING · SECURITY OPERATIONS</span>
           <h1 class="hero-title">Finding the signal in the noise.</h1>
-          <p class="hero-desc">I'm Anh — a Splunk-certified analyst who spends my days separating real threats from alert fatigue, and my nights figuring out how AI can do more of that sorting for us. Currently at IBSS Corp, keeping enterprise customer environments watched around the clock.</p>
+          <p class="hero-desc">I'm Anh — a Splunk Enterprise Certified Architect and SIEM engineer who spends my days separating real threats from alert fatigue, and my nights figuring out how AI can do more of that sorting for us. Currently at IBSS Corp, keeping enterprise customer environments watched around the clock.</p>
           <div class="hero-ctas">
-            <a href="#" class="cta primary" id="resumeBtnHero">Get my résumé</a>
+            <a href="Anh_Phan_Resume.pdf" class="cta primary" id="resumeBtnHero" target="_blank" rel="noopener">Get my résumé</a>
             <a href="https://github.com/aphan37" class="cta" target="_top" rel="noopener">See my code</a>
-            <a href="#" class="cta" id="emailBtnHero">Say hello</a>
+            <a href="mailto:anhphan502174@gmail.com" class="cta" id="emailBtnHero">Say hello</a>
           </div>
         </div>
 
@@ -555,7 +557,7 @@
       <div class="impact-item reveal"><div class="impact-num" data-target="330" data-suffix="+">0</div><div class="impact-label">SPL-driven tickets triaged across customer environments</div></div>
       <div class="impact-item reveal"><div class="impact-num" data-target="90" data-suffix="%">0</div><div class="impact-label">Drop in repeat false-positive noise after detection tuning</div></div>
       <div class="impact-item reveal"><div class="impact-num" data-target="12" data-suffix="+">0</div><div class="impact-label">Detection use cases shipped from real incident patterns</div></div>
-      <div class="impact-item reveal"><div class="impact-num" data-target="7" data-suffix="">0</div><div class="impact-label">Security &amp; SIEM certifications earned</div></div>
+      <div class="impact-item reveal"><div class="impact-num" data-target="9" data-suffix="">0</div><div class="impact-label">Security &amp; SIEM certifications, up to Splunk Certified Architect</div></div>
     </div>
   </div>
 
@@ -573,13 +575,21 @@
 
       <div class="job-card reveal">
         <div class="job-top">
-          <span class="job-title">Security Operations Analyst Intern</span>
+          <span class="job-title">Security Operations Analyst Intern / SIEM Engineer</span>
           <span class="job-date mono">Aug 2025 — Present</span>
         </div>
         <div class="job-org">IBSS Corp <span class="loc">· Silver Spring, MD</span></div>
-        <p class="desc">Handling day-to-day triage for enterprise customer environments — from raw SPL queries against network and auth logs to reviewing the Splunk pipelines those logs flow through. Along the way, I've caught detection gaps other layers missed and helped push customer endpoint protection back to full strength.</p>
+        <p class="desc">Handling day-to-day triage for enterprise customer environments — from raw SPL queries against network and auth logs to engineering the Splunk pipelines those logs flow through. Along the way, I've caught detection gaps other layers missed and helped push customer endpoint protection back to full strength.</p>
+        <ul class="job-bullets">
+          <li>Triaged 330+ tickets with SPL against network and authentication logs, using Gemini AI for first-pass analysis; wrote 20% of the team's incident reports.</li>
+          <li>Escalated 65+ false-positive tickets with tuning recommendations, cutting repeat alerts by 90%.</li>
+          <li>Built 12+ detection use cases in SPL, with SC4S-fed syslog sources.</li>
+          <li>Ran Universal Forwarder compatibility testing in dev before rollout, for a 100% successful deployment.</li>
+          <li>Reviewed customized Splunk Enterprise / Cloud pipelines and deployment server classes for SC4S, Windows, Linux, Domain Controller and Box data.</li>
+          <li>Updated the network port-scanning SOP: severity levels, SLAs and firewall response actions.</li>
+        </ul>
         <div class="job-highlights">
-          <span>330+ tickets triaged</span><span>90% FP noise cut</span><span>12+ detections shipped</span><span>SC4S / Windows / Linux log integration</span>
+          <span>330+ tickets triaged</span><span>65+ FP escalations</span><span>90% FP noise cut</span><span>12+ detections shipped</span><span>100% UF rollout</span><span>SOP owner</span>
         </div>
       </div>
 
@@ -589,9 +599,9 @@
           <span class="job-date mono">Jun 2024 — Apr 2025</span>
         </div>
         <div class="job-org">Bowie State University <span class="loc">· Bowie, MD</span></div>
-        <p class="desc">Built a CNN-based classifier for staging Alzheimer's severity from MRI scans, and spent as much time on the unglamorous plumbing — cleaning 140K+ patient records, tuning image preprocessing — as on the model itself. It's where I learned that most "AI" work is really data-quality work in disguise.</p>
+        <p class="desc">Built a CNN-based classifier for staging Alzheimer's severity from MRI scans, and spent as much time on the unglamorous plumbing — filtering 140K+ records down to 42K unique IDs, tuning Gaussian-smoothing preprocessing in OpenCV — as on the model itself. It's where I learned that most "AI" work is really data-quality work in disguise.</p>
         <div class="job-highlights">
-          <span>140K records processed</span><span>20% sharper imaging</span><span>5x fewer training epochs</span>
+          <span>140K → 42K unique IDs</span><span>20% sharper imaging</span><span>5x fewer training epochs</span><span>85% validation accuracy</span>
         </div>
       </div>
 
@@ -618,6 +628,7 @@
           <div class="chips">
             <span class="chip">Splunk</span><span class="chip">SentinelOne</span><span class="chip">Tenable</span>
             <span class="chip">Avanan</span><span class="chip">Wireshark</span><span class="chip">PCAP</span><span class="chip">OSINT</span>
+            <span class="chip">SC4S</span><span class="chip">Universal Forwarder</span><span class="chip">Palo Alto Firewalls</span><span class="chip">AWS ECS</span>
           </div>
         </div>
         <div>
@@ -625,7 +636,8 @@
           <div class="chips">
             <span class="chip">MITRE ATT&amp;CK</span><span class="chip">NIST CSF</span><span class="chip">IAM</span>
             <span class="chip">Active Directory</span><span class="chip">TCP/IP</span><span class="chip">IDS/IPS</span>
-            <span class="chip">Vulnerability Mgmt</span><span class="chip">CVEs</span>
+            <span class="chip">Vulnerability Mgmt</span><span class="chip">CVEs</span><span class="chip">TTPs / APTs</span>
+            <span class="chip">SSO / MFA</span><span class="chip">SLAs &amp; SOPs</span><span class="chip">CI/CD</span><span class="chip">SDLC</span>
           </div>
         </div>
         <div>
@@ -637,7 +649,7 @@
         <div>
           <div class="skill-cat-label">AI-assisted workflows</div>
           <div class="chips">
-            <span class="chip">Gemini AI triage</span><span class="chip">TensorFlow</span><span class="chip">scikit-learn</span>
+            <span class="chip">Gemini AI triage</span><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span>
           </div>
         </div>
       </div>
@@ -645,6 +657,7 @@
       <div class="cert-band reveal">
         <div class="skill-cat-label">Certifications</div>
         <div class="cert-grid">
+          <div class="cert-card primary"><span class="name">Splunk Enterprise Certified Architect</span><span class="issuer mono">Splunk</span></div>
           <div class="cert-card primary"><span class="name">CompTIA Security+</span><span class="issuer mono">CompTIA</span></div>
           <div class="cert-card primary"><span class="name">Splunk Enterprise Certified Admin</span><span class="issuer mono">Splunk</span></div>
           <div class="cert-card primary"><span class="name">Splunk Cloud Certified Admin</span><span class="issuer mono">Splunk</span></div>
@@ -1023,7 +1036,7 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
             <span class="proj-title">AlzhiNet — CNN MRI Classifier</span>
             <a class="proj-link" href="https://github.com/aphan37/CNNModel" target="_top" rel="noopener">repo ↗</a>
           </div>
-          <p>A custom convolutional network that stages Alzheimer's severity from MRI scans, with Grad-CAM built in so you can actually see what the model is looking at — not just trust the output. Runs from CLI or a Streamlit interface.</p>
+          <p>A custom convolutional network that stages Alzheimer's severity from MRI scans, with Grad-CAM built in so you can actually see what the model is looking at — not just trust the output. Reached 85% validation accuracy in 12 epochs. Runs from CLI or a Streamlit interface.</p>
           <div class="proj-tags"><span>PyTorch</span><span>scikit-learn</span><span>OpenCV</span><span>Grad-CAM</span></div>
         </div>
       </div>
@@ -1151,11 +1164,11 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
     <h2 class="contact-title reveal">Let's build a stronger SOC together.</h2>
     <p style="margin-top:14px; max-width:52ch; font-size:15.5px;">Open to full-time security roles — especially teams pushing further into AI-assisted detection. Reach out directly, or grab the résumé below.</p>
     <div class="contact-links">
-      <a href="#" id="emailBtnFoot">anhphan502174@gmail.com</a>
+      <a href="mailto:anhphan502174@gmail.com" id="emailBtnFoot">anhphan502174@gmail.com</a>
       <a href="tel:2407555796" target="_top">240 755 5796</a>
       <a href="https://www.linkedin.com/in/anhphan37/" target="_top" rel="noopener">LinkedIn</a>
       <a href="https://github.com/aphan37" target="_top" rel="noopener">GitHub</a>
-      <a href="#" class="cta primary" id="resumeBtnFoot" style="border-radius:999px;">Download résumé</a>
+      <a href="Anh_Phan_Resume.pdf" download class="cta primary" id="resumeBtnFoot" style="border-radius:999px;">Download résumé</a>
     </div>
     <div class="foot-note">Navarre, FL — open to roles within 25mi or fully remote</div>
   </div>
@@ -1164,8 +1177,6 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
 <div id="toast" class="mono"></div>
 
 <script>
-  const RESUME_B64 = "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";
-  const RESUME_FILENAME = "Anh_Phan_Resume.docx";
 
   function showToast(msg) {
     const t = document.getElementById('toast');
@@ -1173,47 +1184,6 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2600);
   }
-
-  function fallbackDownload() {
-    try {
-      const byteChars = atob(RESUME_B64);
-      const byteNumbers = new Array(byteChars.length);
-      for (let i = 0; i < byteChars.length; i++) byteNumbers[i] = byteChars.charCodeAt(i);
-      const blob = new Blob([new Uint8Array(byteNumbers)], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = RESUME_FILENAME; a.target = "_top";
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast("Resume download started");
-    } catch (err) {
-      showToast("Download unavailable here — email me instead");
-    }
-  }
-
-  async function handleResumeClick(e) {
-    e.preventDefault();
-    try {
-      const downloads = await claude.use("downloads");
-      if (downloads) {
-        const byteChars = atob(RESUME_B64);
-        const bytes = new Uint8Array(byteChars.length);
-        for (let i = 0; i < byteChars.length; i++) bytes[i] = byteChars.charCodeAt(i);
-        const res = await downloads.save({ filename: RESUME_FILENAME, data: bytes });
-        if (res) { showToast("Resume download started"); return; }
-        showToast("Download was declined");
-        return;
-      }
-      fallbackDownload();
-    } catch (err) {
-      fallbackDownload();
-    }
-  }
-
-  ['resumeBtnNav', 'resumeBtnHero', 'resumeBtnFoot'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('click', handleResumeClick);
-  });
 
   const EMAIL = "anhphan502174@gmail.com";
 
