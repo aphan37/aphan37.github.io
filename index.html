@@ -121,6 +121,7 @@
   section { padding: 84px 0; position: relative; }
   .section-head { margin-bottom: 40px; }
   .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--cyan); }
+  .section-kicker::before { content:'// '; color: var(--text-faint); }
   .section-head h2 { font-size: clamp(26px, 3.4vw, 32px); margin-top: 8px; }
 
   /* ---------- ABOUT ---------- */
@@ -330,6 +331,7 @@
   .tp-leg i { width:10px; height:10px; border-radius:3px; background:var(--c); display:inline-block; }
   .tp-leg[aria-pressed="true"] { background:var(--panel); border-color:var(--c); color:var(--text); }
   .tp-frame { background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:14px; overflow-x:auto; }
+  .diagram-frame { background-color:#0A0A0A; background-image:radial-gradient(#262626 1px, transparent 1px); background-size:22px 22px; border-color:#2E2E2E; }
   .tp { display:block; width:100%; min-width:760px; height:auto; }
   .tp .site { fill:#12132A; stroke:var(--border); }
   .tp .site-name { fill:var(--text); font:600 14px 'Space Grotesk',sans-serif; }
@@ -398,7 +400,7 @@
   .cta.primary, .btn-resume { color:#0A0A0A !important; }
   .proj, .job-card, .cert-card, .tp-stat, .wf-step { box-shadow:none; }
   .proj:hover, .job-card:hover { transform:none; border-color:var(--text); box-shadow:none; }
-  .tp-frame { --panel:#0E0E1C; --border:#2A2C4D; --border-soft:#22233F; --text:#F5F5FC; --text-dim:#C2C3E4; --text-faint:#9294BC; --cyan:#4FE3D4; --violet:#8C6BFF; background:#0E0E1C; border-color:#0E0E1C; border-radius:2px; }
+  .tp-frame { --panel:#0A0A0A; --border:#2E2E2E; --border-soft:#202020; --text:#F5F5FC; --text-dim:#C2C3E4; --text-faint:#9294BC; --cyan:#4FE3D4; --violet:#8C6BFF; background:#0A0A0A; border-color:#2E2E2E; border-radius:2px; }
   #projects, #workflows { --bg:#F4F4F4; --bg-2:#EBEBEB; --panel:#FFFFFF; --border:#BDBDBD; --border-soft:#DADADA; --text:#0A0A0A; --text-dim:#3A3A3A; --text-faint:#666666; --violet:#0A0A0A; --violet-dim:#0A0A0A; --cyan:#0A0A0A; --grad:#0A0A0A; background:var(--bg); color:var(--text); }
   #projects { border-top:0; }
   #projects .proj { border-color:var(--border); }
@@ -406,7 +408,6 @@
   #workflows .tp-btn[aria-pressed="true"], #projects .cta.primary { color:#FFFFFF !important; }
   #workflows .tp-btn:hover { border-color:#0A0A0A; color:#0A0A0A; }
 
-  #topology .tp-frame { background-color:#0A0A0A; background-image:radial-gradient(#262626 1px, transparent 1px); background-size:22px 22px; }
   .tp-tour { margin-top:-4px; }
   .tp .sg { transition:opacity .4s; }
   .tp[data-site="sf"] .sg:not([data-site="sf"]), .tp[data-site="ash"] .sg:not([data-site="ash"]), .tp[data-site="bos"] .sg:not([data-site="bos"]), .tp[data-site="lon"] .sg:not([data-site="lon"]) { opacity:.13; }
@@ -423,7 +424,6 @@
   .wf-callout span { flex:none; background:var(--text); color:var(--bg); font:700 11px 'JetBrains Mono',monospace; letter-spacing:.12em; padding:4px 9px; }
 
   /* ---- Hands-on build (lab) ---- */
-  #lab .tp-frame { background-color:#0A0A0A; background-image:radial-gradient(#262626 1px, transparent 1px); background-size:22px 22px; }
   .lb { display:block; width:100%; min-width:760px; height:auto; }
   .lb .nd rect { fill-opacity:.12; stroke-width:1.5; transition:all .4s; }
   .lb .nd text { font-family:'JetBrains Mono',monospace; text-anchor:middle; }
@@ -484,6 +484,12 @@
   .lb-snip pre { margin:0; padding:4px 18px 18px; overflow-x:auto; font:12.5px/1.65 'JetBrains Mono',monospace; color:var(--text-dim); }
   .lb-snip pre .cm { color:var(--text-faint); }
   @media (prefers-reduced-motion: reduce) { .lb .dot { display:none; } .lb .vw, .lb .nd rect { transition:none; } }
+
+  .lb-toggle-row { margin: 36px 0 0; }
+  #lb-toggle { width:100%; text-align:left; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 18px; font-size:13px; }
+  #lb-toggle:hover { border-color:var(--text); color:var(--text); }
+  .lb-more { display:none; }
+  .lb-more.open { display:block; }
 </style>
 </head>
 <body>
@@ -599,7 +605,12 @@
           <span class="job-date mono">Jun 2024 — Apr 2025</span>
         </div>
         <div class="job-org">Bowie State University <span class="loc">· Bowie, MD</span></div>
-        <p class="desc">Built a CNN-based classifier for staging Alzheimer's severity from MRI scans, and spent as much time on the unglamorous plumbing — filtering 140K+ records down to 42K unique IDs, tuning Gaussian-smoothing preprocessing in OpenCV — as on the model itself. It's where I learned that most "AI" work is really data-quality work in disguise.</p>
+        <p class="desc">Built a CNN-based classifier for staging Alzheimer's severity from MRI scans. Learned that most "AI" work is really data-quality work in disguise.</p>
+        <ul class="job-bullets">
+          <li>Filtered 140K+ clinical records down to 42K unique patient IDs before any model saw them.</li>
+          <li>Tuned Gaussian-smoothing preprocessing in OpenCV for 20% sharper imaging input.</li>
+          <li>Reached 85% validation accuracy in 5x fewer training epochs than the baseline.</li>
+        </ul>
         <div class="job-highlights">
           <span>140K → 42K unique IDs</span><span>20% sharper imaging</span><span>5x fewer training epochs</span><span>85% validation accuracy</span>
         </div>
@@ -611,7 +622,11 @@
           <span class="job-date mono">Jan 2022 — Sep 2022</span>
         </div>
         <div class="job-org">FPT USA <span class="loc">· Remote, US</span></div>
-        <p class="desc">Spent this stretch trying to break set-top-box firmware before customers could — regression testing, version audits over SSH, and just enough scripting to make the repetitive parts fast. First real lesson in thinking like an adversary before something ships.</p>
+        <p class="desc">Spent this stretch trying to break set-top-box firmware before customers could. First real lesson in thinking like an adversary before something ships.</p>
+        <ul class="job-bullets">
+          <li>Ran 18+ regression test cases per sprint against set-top-box firmware.</li>
+          <li>Audited version and log history over SSH; tracked results in Python and Git.</li>
+        </ul>
         <div class="job-highlights">
           <span>18+ test cases / sprint</span><span>Python + Git tracking</span><span>SSH log audits</span>
         </div>
@@ -746,7 +761,7 @@
         </div>
         <button class="tp-btn" id="tp-follow">▶ Follow a log</button>
       </div>
-      <div class="tp-frame">
+      <div class="tp-frame diagram-frame">
         <svg id="tp" class="tp" viewBox="0 0 1200 734" data-phase="1" data-focus="" data-site="" role="img" aria-label="Network and Splunk topology for Buttercup Games across San Francisco, Ashburn, Boston and London"></svg>
       </div>
       <p class="tp-phase-note" id="tp-note" aria-live="polite"></p>
@@ -779,7 +794,7 @@
           <span class="tp-btn tp-leg" style="--c:#A78BFF;cursor:default"><i></i>Management</span>
         </div>
       </div>
-      <div class="tp-frame">
+      <div class="tp-frame diagram-frame">
         <svg id="lb" class="lb" viewBox="0 0 980 500" data-view="data" role="img" aria-label="Eight-node Splunk deployment: two universal forwarders send to a three-indexer cluster; a search head, a cluster manager and a combined license manager, deployment server and monitoring console manage it">
           <defs>
             <marker id="lbm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#A78BFF"/></marker>
@@ -870,6 +885,8 @@
         <div class="tp-stat"><b>6 → 3</b><span>saved reports powering three dashboards</span></div>
       </div>
 
+      <div class="lb-toggle-row"><button class="tp-btn" id="lb-toggle" aria-expanded="false">Show the full build log — design decisions, incidents, verified requirements &amp; configs ▾</button></div>
+      <div id="lb-more" class="lb-more">
       <h2 class="lb-sub reveal">How it was built</h2>
       <p class="lb-lede">Six stages, each checked before the next one started.</p>
       <div class="wf-steps">
@@ -1016,6 +1033,7 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
         </details>
       </div>
       <p class="pipeline-note mono reveal">Built in a training lab on Splunk Enterprise 10.6 and Ubuntu 22.04. Internal hostnames, addresses and keys are left out on purpose.</p>
+      </div>
     </div>
   </section>
 
@@ -1049,7 +1067,7 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
       <div class="tp-controls"><div class="tp-toggle" role="group" aria-label="Choose project">
         <button class="tp-btn" data-wf="wifi" aria-pressed="true">Wi-Fi Auditing</button>
         <button class="tp-btn" data-wf="cnn" aria-pressed="false">AlzhiNet CNN</button></div></div>
-      <div id="wf-wifi" class="wf-panel"><div class="tp-frame"><svg class="wf-svg" viewBox="0 0 1000 340" role="img" aria-label="Wi-Fi auditing workflow: scan, capture handshake, flag rogue access point">
+      <div id="wf-wifi" class="wf-panel"><div class="tp-frame diagram-frame"><svg class="wf-svg" viewBox="0 0 1000 340" role="img" aria-label="Wi-Fi auditing workflow: scan, capture handshake, flag rogue access point">
 <defs><marker id="wa" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7B7EC0"/></marker>
 <linearGradient id="wsw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4FE3D4" stop-opacity="0"/><stop offset="1" stop-color="#4FE3D4" stop-opacity=".55"/></linearGradient></defs>
 <text class="h" x="160" y="26">01 · SCAN</text><text class="h" x="500" y="26">02 · CAPTURE</text><text class="h" x="850" y="26">03 · FLAG</text>
@@ -1081,7 +1099,7 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
 </g>
 <text class="sm c" x="850" y="326">SSID broadcast anomalies (illustrative)</text>
 </svg></div><div class="wf-steps"><div class="wf-step"><em>01</em><h3>Scan</h3><p>Sweep the air for nearby networks and see what is broadcasting.</p><div class="proj-tags"><span>Kali Linux</span><span>scapy</span></div></div><div class="wf-step"><em>02</em><h3>Capture</h3><p>Grab WPA/WPA2 handshakes for controlled testing.</p><div class="proj-tags"><span>aircrack-ng</span></div></div><div class="wf-step"><em>03</em><h3>Flag</h3><p>Watch SSID broadcasts for anomalies that give away rogue access points.</p><div class="proj-tags"><span>scapy</span><span>Python</span></div></div><div class="wf-step"><em>04</em><h3>Understand</h3><p>See what weak Wi-Fi security looks like from the attacker’s seat.</p><div class="proj-tags"><span>Authorized testing only</span></div></div></div></div>
-      <div id="wf-cnn" class="wf-panel" hidden><div class="tp-frame"><svg class="wf-svg" style="min-width:900px" viewBox="0 0 1230 330" role="img" aria-label="AlzhiNet workflow: NACC clinical records and MRI scans are harmonized, smoothed, passed through a CNN, and staged on the CDR severity scale with Grad-CAM explanations">
+      <div id="wf-cnn" class="wf-panel" hidden><div class="tp-frame diagram-frame"><svg class="wf-svg" style="min-width:900px" viewBox="0 0 1230 330" role="img" aria-label="AlzhiNet workflow: NACC clinical records and MRI scans are harmonized, smoothed, passed through a CNN, and staged on the CDR severity scale with Grad-CAM explanations">
 <defs><marker id="ca" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7B7EC0"/></marker>
 <radialGradient id="heat"><stop offset="0" stop-color="#FF3B5C" stop-opacity=".95"/><stop offset=".5" stop-color="#FFB067" stop-opacity=".6"/><stop offset="1" stop-color="#FFE066" stop-opacity="0"/></radialGradient>
 <linearGradient id="sev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7BE0A0"/><stop offset=".5" stop-color="#FFE066"/><stop offset="1" stop-color="#FF6B81"/></linearGradient></defs>
@@ -1406,6 +1424,14 @@ blacklist = (lastlog|falcon|dmesg|cloud-init-output|/journal/|\.(gz|bz2|xz|zip)$
     var a=document.createElementNS(NS,'animateMotion'); a.setAttribute('dur','7s'); a.setAttribute('path',path); a.setAttribute('fill','freeze'); a.setAttribute('repeatCount','1');
     c.appendChild(a); svg.appendChild(c); a.beginElement && a.beginElement();
     timers.push(setTimeout(function(){c.remove();},7600));
+  });
+})();
+
+(function(){
+  var t=document.getElementById('lb-toggle'), m=document.getElementById('lb-more'); if(!t||!m) return;
+  t.addEventListener('click',function(){
+    var open=m.classList.toggle('open'); t.setAttribute('aria-expanded',open);
+    t.textContent = open ? '▴ Hide the full build log' : 'Show the full build log — design decisions, incidents, verified requirements & configs ▾';
   });
 })();
 </script>
